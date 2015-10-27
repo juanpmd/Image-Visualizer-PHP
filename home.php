@@ -18,10 +18,13 @@
     </nav>
     <!-- ################################### -->
     <main>
+      <div id="upload-button">
+        <img src="img/Upload.svg"/>
+      </div>
       <div id="setting-button">
         <div id="user-image"></div>
         <div id="user-name-box">
-          <p>Hello, <span>Mark Zuckerberg</span></p>
+          <p>Hello, <span>Juan Pablo Mejia</span></p>
         </div>
         <div id="more-arrow">
           <img src="img/MoreArrow.svg" alt="">
