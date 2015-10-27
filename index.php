@@ -1,3 +1,40 @@
+<?php
+require_once 'DB/DB.php';
+require_once 'Models/Users.php';
+
+//--------------------------->>>
+function getUserbyID($user,$username){
+$result=$user->getUser($username);
+$contact=$result->fetch_array(MYSQLI_ASSOC);
+return $contact;
+}
+//--------------------------->>>
+session_start();
+
+if (isset($_SESSION["username"]) ){
+header( "Location: http://localhost:8888/SeekInspire/home.php");
+}
+if(isset($_POST["submit"])){
+$user = new Users ();
+$valor = getUserbyID($user, $_POST["user"]);
+$pass = md5($_POST["password"]);
+
+if (!$valor){
+  $pos = 1;
+}
+elseif ($valor['password'] === $pass) {
+  session_start();
+  $_SESSION["username"] = $valor['name'];
+  $_SESSION["user"] = $valor['username'];
+  header( "Location: http://localhost:8888/SeekInspire/home.php");
+}
+else {
+  $pos = 1;
+}
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,7 +60,7 @@
       <form action="index.php" method="post">
         <input class="input-field" type="text" name="user" placeholder="Username">
         <input class="input-field" type="password" name="password" placeholder="Password">
-        <button id="login-button" type="submit" name="login">Sign in</button>
+        <button id="login-button" type="submit" name="submit">Sign in</button>
       </form>
 
       <div id="or-label">

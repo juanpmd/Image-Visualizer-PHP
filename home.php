@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["username"]) ){
+  header( "Location: http://localhost:8888/SeekInspire/index.php");
+}
+
+if(isset($_POST["submit"])){
+  session_unset();
+  session_destroy();
+  header( "Location: http://localhost:8888/SeekInspire/index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,10 +35,19 @@
       <div id="upload-button">
         <img src="img/Upload.svg"/>
       </div>
+
+
+
+      <form action="home.php" method="post">
+        <button id="logout" type="submit" name="submit">Logout</button>
+      </form>
+
+
+
       <div id="setting-button">
         <div id="user-image"></div>
         <div id="user-name-box">
-          <p>Hello, <span>Juan Pablo Mejia</span></p>
+          <p>Hello, <span><?php echo $_SESSION["username"] ?></span></p>
         </div>
         <div id="more-arrow">
           <img src="img/MoreArrow.svg" alt="">
