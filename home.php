@@ -5,7 +5,7 @@ if (!isset($_SESSION["username"]) ){
   header( "Location: http://localhost:8888/SeekInspire/index.php");
 }
 
-if(isset($_POST["submit"])){
+if(isset($_POST["logout"])){
   session_unset();
   session_destroy();
   header( "Location: http://localhost:8888/SeekInspire/index.php");
@@ -24,7 +24,7 @@ if(isset($_POST["submit"])){
     <!-- ################################### -->
     <nav>
       <div id="search-box">
-        <form>
+        <form id="form-search">
           <img src="img/Search.svg"/>
           <input type="text" name="name" placeholder="Search for tags">
         </form>
@@ -35,15 +35,6 @@ if(isset($_POST["submit"])){
       <div id="upload-button">
         <img src="img/Upload.svg"/>
       </div>
-
-
-
-      <form action="home.php" method="post">
-        <button id="logout" type="submit" name="submit">Logout</button>
-      </form>
-
-
-
       <div id="setting-button">
         <div id="user-image"></div>
         <div id="user-name-box">
@@ -57,14 +48,18 @@ if(isset($_POST["submit"])){
     </main>
     <!-- ################################### -->
     <div id="settings-box" class="hidden">
-      <div class="settings-item">
+      <button class="settings-item">
         <img src="img/Settings.svg">
         <p>Settings</p>
-      </div>
-      <div class="settings-item">
-        <img src="img/Logout.svg">
-        <p>Log out</p>
-      </div>
+      </button>
+
+      <form action="home.php" method="post">
+        <button class="settings-item" type="submit" name="logout">
+          <img src="img/Logout.svg">
+          <p>Log out</p>
+        </button>
+      </form>
+
     </div>
     <!-- ################################### -->
     <script src="js/jQuery.js"></script>
