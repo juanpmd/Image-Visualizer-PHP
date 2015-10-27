@@ -44,7 +44,6 @@ else {
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
   </head>
   <body>
-
     <div id="login-box">
       <div id="colors-box">
         <div class="color-elem" id="color-1"></div>

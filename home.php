@@ -1,24 +1,19 @@
 <?php
 session_start();
-
 if (!isset($_SESSION["username"]) ){
-  header( "Location: http://localhost:8888/SeekInspire/index.php");
-}
-
-if(isset($_POST["logout"])){
-  session_unset();
-  session_destroy();
   header( "Location: http://localhost:8888/SeekInspire/index.php");
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html ng-app="UserApp">
   <head>
     <meta charset="utf-8">
     <title>Seek Inspire</title>
     <link rel="stylesheet" href="css/home.css"></link>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="http://localhost:8888/SeekInspire/Controllers/UserController.js"></script>
   </head>
   <body>
     <!-- ################################### -->
@@ -47,18 +42,16 @@ if(isset($_POST["logout"])){
       </div>
     </main>
     <!-- ################################### -->
-    <div id="settings-box" class="hidden">
-      <button class="settings-item">
+    <div id="settings-box" class="hidden" ng-controller="UserAppController">
+      <button ng-click="" class="settings-item">
         <img src="img/Settings.svg">
         <p>Settings</p>
       </button>
 
-      <form action="home.php" method="post">
-        <button class="settings-item" type="submit" name="logout">
-          <img src="img/Logout.svg">
-          <p>Log out</p>
-        </button>
-      </form>
+      <button ng-click="UserLogout()" class="settings-item" name="logout">
+        <img src="img/Logout.svg">
+        <p>Log out</p>
+      </button>
 
     </div>
     <!-- ################################### -->
