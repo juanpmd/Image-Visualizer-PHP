@@ -67,50 +67,15 @@ main {
   border-bottom: 1px solid #e7e3e3;
 }
 #setting-button{
-  height: 100%; width: 300px;
+  height: 40px; width: 40px;
   position: absolute;
   top: 0; right: 0;
   cursor: pointer;
+  margin: 15px;
 }
-#user-image {
-  background: #384b66;
-  height: 40px; width: 40px;
-  position: absolute;
-  right: 15px; top: 50%;
-  -ms-transform: translate(0, -50%);
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-  border-radius: 100%;
-  margin-right: 10px;
-}
-#user-name-box {
-  height: 100%; width: 200px;
-  position: absolute;
-  top: 0; right: 90px;
-}
-#more-arrow {
-  height: 100%; width: 30px;
-  position: absolute;
-  top: 0; right: 55px;
-}
-#user-name-box p{
-  position: absolute; top: 50%;
-  -ms-transform: translate(0, -50%);
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-  right: 0; color: #1A2639;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: 400; font-size: 18px;
-}
-#user-name-box p span{
-  font-weight: 400; color: #555454;
-}
-#more-arrow img{
-  width: 13px;
-  top: 50%; position: absolute;
-  -ms-transform: translate(0, -50%);
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
+#setting-button:hover{
+  background: #f2f2f2;
+  border-radius: 7px;
 }
 #settings-box {
   position: absolute;
@@ -145,4 +110,13 @@ main {
 #upload-button {
   width: 30px; height: 20px;
   margin: 25.5px;
+}
+#menu-option {
+  height: 20px; width: 5px;
+  position: relative;
+  margin: auto;
+  top: 50%;
+  -ms-transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }

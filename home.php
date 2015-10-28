@@ -31,14 +31,9 @@ if (!isset($_SESSION["username"]) ){
         <img src="img/Upload.svg"/>
       </div>
       <div id="setting-button">
-        <div id="user-image"></div>
-        <div id="user-name-box">
-          <p>Hello, <span><?php echo $_SESSION["username"] ?></span></p>
+        <div id="menu-option">
+          <img src="img/MenuOptions.svg"/>
         </div>
-        <div id="more-arrow">
-          <img src="img/MoreArrow.svg" alt="">
-        </div>
-        <!--<img src="img/Settings.svg"/>-->
       </div>
     </main>
     <!-- ################################### -->
