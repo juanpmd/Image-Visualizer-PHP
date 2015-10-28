@@ -5,6 +5,7 @@ class Users extends DB {
 	const ALL_USERS = "select * from user";
 	const INSERT_USER = "insert into user(username,name,password,email) values (?,?,?,?)";
 	const LOOK_USER = "select username, name, password, email from user where username=?";
+	const LOOK_PASSWORD = "select password from user where username=?";
 
   //---------AGREGAR UN USUSARIO NUEVO----------------->>>
 	public function addNewUser($contact) {
@@ -32,12 +33,6 @@ class Users extends DB {
       die("algo salio mal");
     }
   }
-
-
-
-
-
-
   //--------REVISA SI USUARIO ESTA EN BD------------------>>>
 	public function getUser($username){
 		$arguments = ["username"=>$username];
@@ -47,6 +42,25 @@ class Users extends DB {
 			}else{
 				die("algo salio mal en getUser");
 			}
+	}
+	//--------RETORNA SI DATOS INPUT LOGIN IGUALES A BD------------------>>>
+	public function getUserState($username,$password){
+		$arguments = ["username"=>$username];
+		$result=$this->query(self::LOOK_USER,$arguments);
+		$contact=$result->fetch_array(MYSQLI_ASSOC);
+		if (!empty($contact)){
+			$pass = $contact["password"];
+			$userpassword = md5($password);
+			if ($pass === $userpassword){
+				return "yes";
+			}
+			else {
+				return "no";
+			}
+		}
+		else {
+			return "no";
+		}
 	}
   //-------------------------->>>
 }

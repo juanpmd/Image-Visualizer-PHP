@@ -6,11 +6,11 @@ require_once 'Models/Users.php';
 $user = new Users ();
 
 $contact = ["username"=>"juanpmd","name"=>"Juan Pablo Mejia","password"=>"1234","email"=>"juanpmd@hotmail.com"];
-$contact2 = ["username"=>"prueba","name"=>"Usuario de Prueba","password"=>"123456789","email"=>"prueba@gmail.com"];
-insertNewUser($user, $contact2);
-printAllUsers($user);
+#insertNewUser($user, $contact);
+#printAllUsers($user);
 
-//getUserbyID($user,"arev123");
+//getUserbyID($user,"juanpmd");
+UserState($user,"juanpmd","12345");
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -36,6 +36,14 @@ function getUserbyID($user,$username){
 	echo "Username:".$contact['username']."<br>";
 	echo "Password:", $contact['password'],"<br>";
 	echo "Name:", $contact['name'],"<br>";
+	echo "Email:", $contact['email'],"<br>";
 }
 //-------------------------->>>
+function UserState($user,$username,$password){
+	#$pass = md5($password);
+	$result=$user->getUserState($username,$password);
+	echo $result;
+}
+
+
 ?>
