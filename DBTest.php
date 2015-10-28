@@ -10,7 +10,7 @@ $contact = ["username"=>"juanpmd","name"=>"Juan Pablo Mejia","password"=>"1234",
 #printAllUsers($user);
 
 //getUserbyID($user,"juanpmd");
-UserState($user,"juanpmd","12345");
+UserState($user,"juanpmd","1234");
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){

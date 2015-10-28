@@ -53,15 +53,13 @@ class Users extends DB {
 			$userpassword = md5($password);
 			if ($pass === $userpassword){
 				return "yes";
-			}
-			else {
+			} else {
 				return "no";
 			}
-		}
-		else {
+		} else {
 			return "no";
 		}
 	}
-  //-------------------------->>>
+  //---------------------------------->>>
 }
 ?>
