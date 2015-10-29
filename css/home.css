@@ -17,25 +17,25 @@ nav {
   background: #1A2639;
 }
 #search-box {
-  width: 100%; height: 71px;
+  width: 100%; height: 66px;
   background: #131c2a;
 }
 #form-search {
-  height: 71px;
+  height: 66px;
 }
 #form-search img{
-  width: 18px; height: 18px;
+  width: 18px; height: 15px;
   position: absolute;
   cursor: pointer;
   background: #384b66;
   padding: 11px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  margin: 15.5px 0 15.5px 20px;
+  margin: 14.5px 0 15.5px 20px;
   border-right: 1px solid #1A2639;
 }
 #form-search input[type="text"]{
-  width: 178px; height: 40px;
+  width: 178px; height: 37px;
   background: #131c2a; color: #4c678c;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 400; font-size: 16px;
@@ -60,7 +60,7 @@ nav {
    color: #466085;
 }
 main {
-  width: calc(100% - 280px); height: 70px;
+  width: calc(100% - 280px); height: 65px;
   background: #ffffff;
   position: absolute;
   top: 0; right: 0;
@@ -71,7 +71,7 @@ main {
   position: absolute;
   top: 0; right: 0;
   cursor: pointer;
-  margin: 15px;
+  margin: 12.5px;
 }
 #setting-button:hover{
   background: #f2f2f2;
@@ -80,9 +80,10 @@ main {
 #settings-box {
   position: absolute;
   width: 150px; height: 90px;
-  top: 71px; right: 25px;
+  top: 66px; right: 25px;
   background: #ffffff;
   box-shadow: 0px 0px 3px #bdbdbd;
+  z-index: 100;
 }
 .settings-item {
   width: 100%; height: 45px;
@@ -107,10 +108,6 @@ main {
   position: relative;
   margin-left: 40px;
 }
-#upload-button {
-  width: 30px; height: 20px;
-  margin: 25.5px;
-}
 #menu-option {
   height: 20px; width: 5px;
   position: relative;
@@ -119,4 +116,31 @@ main {
   -ms-transform: translate(0, -50%);
   -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
+}
+#images-section {
+  width: calc(100% - 280px); height: calc(100% - 65px);
+  position: absolute;
+  bottom: 0; right: 0;
+  text-align: center;
+  overflow-x: scroll;
+}
+.image-box {
+  width: 200px; height: 235px;
+  display: inline-block;
+  background: #d2d0d0;
+  border-radius: 3px;
+  margin: 20px 10px;
+}
+.image-fill {
+  position: relative;
+  width: 200px; height: 200px;
+  display: block;
+}
+.image-fill img{
+  width: 200px; height: 200px;
+}
+.image-info-box {
+  position: relative;
+  width: 100%; height: 35px;
+  display: block;
 }

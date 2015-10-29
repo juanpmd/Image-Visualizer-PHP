@@ -24,12 +24,10 @@ if (!isset($_SESSION["username"]) ){
           <input type="text" name="name" placeholder="Search for tags">
         </form>
       </div>
+
     </nav>
     <!-- ################################### -->
     <main>
-      <div id="upload-button">
-        <img src="img/Upload.svg"/>
-      </div>
       <div id="setting-button">
         <div id="menu-option">
           <img src="img/MenuOptions.svg"/>
@@ -42,13 +40,94 @@ if (!isset($_SESSION["username"]) ){
         <img src="img/Settings.svg">
         <p>Settings</p>
       </button>
-
       <button ng-click="UserLogout()" class="settings-item" name="logout">
         <img src="img/Logout.svg">
         <p>Log out</p>
       </button>
-
     </div>
+    <!-- ################################### -->
+    <div id="images-section">
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/9ef7cccc69a41dc0e71b0c681d4f7120.jpg"/>
+        </div>
+        <div class="image-info-box">
+
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/oneloveyo!_poster.png"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/c0c3fd29324129.55edea46f1ecc.jpg"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/89b44e15c8d527fd731949d198c75fb2.png"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/ScreenShot2015-10-15at2.00.01PM.png"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/87c74bb2081cb42a92683d189523b3a1.jpg"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/ScreenShot2015-10-15at2.00.01PM.png"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/87c74bb2081cb42a92683d189523b3a1.jpg"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/c0c3fd29324129.55edea46f1ecc.jpg"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/9ef7cccc69a41dc0e71b0c681d4f7120.jpg"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/oneloveyo!_poster.png"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/c0c3fd29324129.55edea46f1ecc.jpg"/>
+        </div>
+      </div>
+      <div class="image-box">
+        <div class="image-fill">
+          <img src="uploads/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
+        </div>
+      </div>
+    </div>
+    <!-- ################################### -->
+    <!-- ################################### -->
     <!-- ################################### -->
     <script src="js/jQuery.js"></script>
     <script type="text/javascript" src="js/home.js"></script>

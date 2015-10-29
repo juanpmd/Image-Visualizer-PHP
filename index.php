@@ -31,17 +31,10 @@ if (isset($_SESSION["username"]) ){
       <form ng-controller="UserAppController">
         <input ng-model="username" class="input-field" type="text" name="user" placeholder="Username">
         <input ng-model="password" class="input-field" type="password" name="password" placeholder="Password">
-        <button ng-click="login()" id="login-button">Sign in</button>
+        <button ng-click="login()" id="login-button">SIGN IN</button>
       </form>
+      <p id="signup-link">Don't have an account yet? <a href="#">Sign up</a></p>
 
-      <div id="or-label">
-        <div id="dotted-line"></div>
-        <p>OR</p>
-      </div>
-      <div id="facebook-button">
-        <img src="img/Facebook-Logo.svg" alt="">
-        <p>Sign in with Facebook</p>
-      </div>
     </div>
   </body>
 </html>
