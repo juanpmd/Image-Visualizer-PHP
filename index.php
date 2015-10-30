@@ -6,14 +6,14 @@ if (isset($_SESSION["username"]) ){
 ?>
 
 <!DOCTYPE html>
-<html ng-app="UserApp">
+<html ng-app="WebApp">
   <head>
     <meta charset="utf-8">
     <title>Sign In</title>
     <link rel="stylesheet" href="css/index.css"></link>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-    <script src="http://localhost:8888/SeekInspire/Controllers/UserController.js"></script>
+    <script src="http://localhost:8888/SeekInspire/Controllers/WebController.js"></script>
   </head>
   <body>
     <div id="login-box">
@@ -28,7 +28,7 @@ if (isset($_SESSION["username"]) ){
         <div class="color-elem" id="color-8"></div>
       </div>
       <img id="logo-seekinspire" src="img/SeekInspire.svg" alt="">
-      <form ng-controller="UserAppController">
+      <form ng-controller="WebAppController">
         <input ng-model="username" class="input-field" type="text" name="user" placeholder="Username">
         <input ng-model="password" class="input-field" type="password" name="password" placeholder="Password">
         <button ng-click="login()" id="login-button">SIGN IN</button>

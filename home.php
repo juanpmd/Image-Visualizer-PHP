@@ -6,14 +6,14 @@ if (!isset($_SESSION["username"]) ){
 ?>
 
 <!DOCTYPE html>
-<html ng-app="UserApp">
+<html ng-app="WebApp">
   <head>
     <meta charset="utf-8">
     <title>Seek Inspire</title>
     <link rel="stylesheet" href="css/home.css"></link>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-    <script src="http://localhost:8888/SeekInspire/Controllers/UserController.js"></script>
+    <script src="http://localhost:8888/SeekInspire/Controllers/WebController.js"></script>
   </head>
   <body>
     <!-- ################################### -->
@@ -25,6 +25,12 @@ if (!isset($_SESSION["username"]) ){
         </form>
       </div>
 
+      <form id="upload-prueba" action="upload.php" method="post" enctype="multipart/form-data">
+          Select image to upload:
+          <input type="file" name="fileToUpload" id="fileToUpload">
+          <input type="submit" value="Upload Image" name="submit">
+      </form>
+
     </nav>
     <!-- ################################### -->
     <main>
@@ -35,7 +41,7 @@ if (!isset($_SESSION["username"]) ){
       </div>
     </main>
     <!-- ################################### -->
-    <div id="settings-box" class="hidden" ng-controller="UserAppController">
+    <div id="settings-box" class="hidden" ng-controller="WebAppController">
       <button ng-click="" class="settings-item">
         <img src="img/Settings.svg">
         <p>Settings</p>
@@ -49,7 +55,7 @@ if (!isset($_SESSION["username"]) ){
     <div id="images-section">
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/9ef7cccc69a41dc0e71b0c681d4f7120.jpg"/>
+          <img src="uploads/Pruebas/9ef7cccc69a41dc0e71b0c681d4f7120.jpg"/>
         </div>
         <div class="image-info-box">
 
@@ -57,76 +63,75 @@ if (!isset($_SESSION["username"]) ){
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/oneloveyo!_poster.png"/>
+          <img src="uploads/Pruebas/oneloveyo!_poster.png"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/c0c3fd29324129.55edea46f1ecc.jpg"/>
+          <img src="uploads/Pruebas/c0c3fd29324129.55edea46f1ecc.jpg"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/89b44e15c8d527fd731949d198c75fb2.png"/>
+          <img src="uploads/Pruebas/89b44e15c8d527fd731949d198c75fb2.png"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/ScreenShot2015-10-15at2.00.01PM.png"/>
+          <img src="uploads/Pruebas/ScreenShot2015-10-15at2.00.01PM.png"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/87c74bb2081cb42a92683d189523b3a1.jpg"/>
+          <img src="uploads/Pruebas/87c74bb2081cb42a92683d189523b3a1.jpg"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
+          <img src="uploads/Pruebas/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/ScreenShot2015-10-15at2.00.01PM.png"/>
+          <img src="uploads/Pruebas/ScreenShot2015-10-15at2.00.01PM.png"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/87c74bb2081cb42a92683d189523b3a1.jpg"/>
+          <img src="uploads/Pruebas/87c74bb2081cb42a92683d189523b3a1.jpg"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
+          <img src="uploads/Pruebas/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/c0c3fd29324129.55edea46f1ecc.jpg"/>
+          <img src="uploads/Pruebas/c0c3fd29324129.55edea46f1ecc.jpg"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/9ef7cccc69a41dc0e71b0c681d4f7120.jpg"/>
+          <img src="uploads/Pruebas/9ef7cccc69a41dc0e71b0c681d4f7120.jpg"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/oneloveyo!_poster.png"/>
+          <img src="uploads/Pruebas/oneloveyo!_poster.png"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/c0c3fd29324129.55edea46f1ecc.jpg"/>
+          <img src="uploads/Pruebas/c0c3fd29324129.55edea46f1ecc.jpg"/>
         </div>
       </div>
       <div class="image-box">
         <div class="image-fill">
-          <img src="uploads/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
+          <img src="uploads/Pruebas/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
         </div>
       </div>
     </div>
-    <!-- ################################### -->
     <!-- ################################### -->
     <!-- ################################### -->
     <script src="js/jQuery.js"></script>

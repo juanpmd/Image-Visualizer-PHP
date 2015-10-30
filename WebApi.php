@@ -2,7 +2,7 @@
   require_once 'Controllers/RestApi.php';
   require_once 'Models/Users.php';
 
-  class UserAPI extends REST {
+  class WebAPI extends REST {
     //-------------------------->>>
     public function processApi() {
       $func = strtolower (trim (str_replace ( "/", "", $_REQUEST ['val'])));
@@ -35,6 +35,6 @@
     }
     //-------------------------->>>
   }
-  $api = new UserAPI();
+  $api = new WebAPI();
   $api->processApi();
 ?>

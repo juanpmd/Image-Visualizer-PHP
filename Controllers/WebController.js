@@ -1,12 +1,12 @@
 
-var app = angular.module('UserApp', []);
+var app = angular.module('WebApp', []);
 
-app.controller("UserAppController", ['$scope', '$http',
+app.controller("WebAppController", ['$scope', '$http',
   function($scope, $http){
 
     //------------------->>>
     $scope.UserLogout = function(){
-      $http.post('UserApi.php?val=Logout').success(function(data) {
+      $http.post('WebApi.php?val=Logout').success(function(data) {
         window.location.replace("http://localhost:8888/SeekInspire/index.php");
 			}).error(function(data) {
 				console.log('Error: ' + data);
@@ -14,7 +14,7 @@ app.controller("UserAppController", ['$scope', '$http',
     }
     //------------------->>>
     $scope.login = function(){
-      $http.post('UserApi.php?val=ValidacionUsuario',{
+      $http.post('WebApi.php?val=ValidacionUsuario',{
         username: $scope.username,
         password: $scope.password
 
