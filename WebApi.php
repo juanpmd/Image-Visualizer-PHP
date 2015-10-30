@@ -1,6 +1,7 @@
 <?php
   require_once 'Controllers/RestApi.php';
   require_once 'Models/Users.php';
+  require_once 'Models/Files.php';
 
   class WebAPI extends REST {
     //-------------------------->>>
@@ -33,6 +34,24 @@
         $this->response('', 404 );
       }
     }
+    //-------------------------->>>
+    private function UploadFile(){
+      if ($this->get_request_method () != "POST") {
+  			$this->response ( '', 406 );
+  		}
+  		$usuario = new Files();
+  		$data = json_decode(file_get_contents('php://input'),true);
+      $result=$usuario->addNewImages($data["username"],$data["password"]);
+      if ($result == "yes"){
+        session_start();
+        $_SESSION["username"] = $data["username"];
+        $this->response('', 200 );
+      } else {
+        $this->response('', 404 );
+      }
+    }
+    //-------------------------->>>
+    //-------------------------->>>
     //-------------------------->>>
   }
   $api = new WebAPI();

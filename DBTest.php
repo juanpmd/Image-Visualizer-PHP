@@ -1,16 +1,21 @@
 <?php
 require_once 'DB/DB.php';
 require_once 'Models/Users.php';
-
+require_once 'Models/Files.php';
 
 $user = new Users ();
+$file = new Files ();
 
-$contact = ["username"=>"juanpmd","name"=>"Juan Pablo Mejia","password"=>"1234","email"=>"juanpmd@hotmail.com"];
+#$contact = ["username"=>"juanpmd","name"=>"Juan Pablo Mejia","password"=>"1234","email"=>"juanpmd@hotmail.com"];
 #insertNewUser($user, $contact);
 #printAllUsers($user);
 
 //getUserbyID($user,"juanpmd");
-UserState($user,"juanpmd","1234");
+//UserState($user,"juanpmd","1234");
+
+$nuevaimg = ["username_id"=>"prueba","name"=>"parrilla_15.jpg"];
+//insertNewImage($file, $nuevaimg);
+printAllImages($file);
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -44,6 +49,25 @@ function UserState($user,$username,$password){
 	$result=$user->getUserState($username,$password);
 	echo $result;
 }
+//-------------------------->>>
+function printAllImages($user) {
+	$result=$user->showAllImages();
+	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
+	foreach ($contactArray as $contact) {
+		echo "ID: ", $contact['id'],"<br>";
+    echo "username_id: ", $contact['username_id'],"<br>";
+		echo "name: ", $contact['name'],"<br>";
+    echo "creationdate: ", $contact['creationdate'],"<br>";
+    echo "------------------------------------------->>><br>";
+	}
+}
 
+//------------------------------------------------------------->>>
+function insertNewImage($user, $contact){
+	$result = $user->addNewImages($contact);
+	return $result;
+}
+//-------------------------->>>
+//-------------------------->>>
 
 ?>

@@ -15,7 +15,7 @@ if (!isset($_SESSION["username"]) ){
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
     <script src="http://localhost:8888/SeekInspire/Controllers/WebController.js"></script>
   </head>
-  <body>
+  <body ng-controller="WebAppController">
     <!-- ################################### -->
     <nav>
       <div id="search-box">
@@ -25,10 +25,10 @@ if (!isset($_SESSION["username"]) ){
         </form>
       </div>
 
-      <form id="upload-prueba" action="upload.php" method="post" enctype="multipart/form-data">
+      <form id="upload-prueba">
           Select image to upload:
-          <input type="file" name="fileToUpload" id="fileToUpload">
-          <input type="submit" value="Upload Image" name="submit">
+          <input ng-model="file" type="file" name="fileToUpload" id="fileToUpload">
+          <button ng-click="upload()">Upload</button>
       </form>
 
     </nav>
@@ -41,7 +41,7 @@ if (!isset($_SESSION["username"]) ){
       </div>
     </main>
     <!-- ################################### -->
-    <div id="settings-box" class="hidden" ng-controller="WebAppController">
+    <div id="settings-box" class="hidden">
       <button ng-click="" class="settings-item">
         <img src="img/Settings.svg">
         <p>Settings</p>
