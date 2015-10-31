@@ -27,17 +27,8 @@ app.controller("WebAppController", ['$scope', '$http',
 			});
     }
     //------------------->>>
-    $scope.upload = function(){
-      console.log("puedo entrar aqui");
-      $http.post('WebApi.php?val=ValidacionUsuario',{
-        username: $scope.username,
-        password: $scope.password
-
-      }).success(function(data) {
-				window.location.replace("http://localhost:8888/SeekInspire/home.php");
-			}).error(function(data) {
-				console.log('Error: ' + data);
-			});
+    $scope.upload = function(Uploadfile){
+      console.log("puedo entrar aqui: " + Uploadfile);
     }
     //------------------->>>
 

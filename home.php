@@ -27,8 +27,8 @@ if (!isset($_SESSION["username"]) ){
 
       <form id="upload-prueba">
           Select image to upload:
-          <input ng-model="file" type="file" name="fileToUpload" id="fileToUpload">
-          <button ng-click="upload()">Upload</button>
+          <input ng-model="Uploadfile" type="file" id="fileToUpload">
+          <button ng-click="upload(Uploadfile)">Upload</button>
       </form>
 
     </nav>
