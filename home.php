@@ -13,7 +13,7 @@ if (!isset($_SESSION["username"]) ){
     <link rel="stylesheet" href="css/home.css"></link>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-    <script src="http://localhost:8888/SeekInspire/Controllers/WebController.js"></script>
+    <script src="Controllers/WebController.js"></script>
   </head>
   <body ng-controller="WebAppController">
     <!-- ################################### -->
@@ -24,13 +24,6 @@ if (!isset($_SESSION["username"]) ){
           <input type="text" name="name" placeholder="Search for tags">
         </form>
       </div>
-
-      <form id="upload-prueba">
-          Select image to upload:
-          <input ng-model="Uploadfile" type="file" id="fileToUpload">
-          <button ng-click="upload(Uploadfile)">Upload</button>
-      </form>
-
     </nav>
     <!-- ################################### -->
     <main>
@@ -39,6 +32,9 @@ if (!isset($_SESSION["username"]) ){
           <img src="img/MenuOptions.svg"/>
         </div>
       </div>
+
+      <div id="upload-open-main"></div>
+
     </main>
     <!-- ################################### -->
     <div id="settings-box" class="hidden">
@@ -53,86 +49,27 @@ if (!isset($_SESSION["username"]) ){
     </div>
     <!-- ################################### -->
     <div id="images-section">
-      <div class="image-box">
+
+      <div ng-repeat="data in imagenes" class="image-box" >
         <div class="image-fill">
-          <img src="uploads/Pruebas/9ef7cccc69a41dc0e71b0c681d4f7120.jpg"/>
+          <img ng-src="{{ data.name }}"/>
         </div>
         <div class="image-info-box">
+        <p>{{data.type}}</p></div>
+      </div>
+
+    </div>
+    <!-- ################################### -->
+    <div id="upload-page" class="hidden">
+      <div id="upload-block">
+        <div id="upload-block-data">
 
         </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/oneloveyo!_poster.png"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/c0c3fd29324129.55edea46f1ecc.jpg"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/89b44e15c8d527fd731949d198c75fb2.png"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/ScreenShot2015-10-15at2.00.01PM.png"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/87c74bb2081cb42a92683d189523b3a1.jpg"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/ScreenShot2015-10-15at2.00.01PM.png"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/87c74bb2081cb42a92683d189523b3a1.jpg"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/c0c3fd29324129.55edea46f1ecc.jpg"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/9ef7cccc69a41dc0e71b0c681d4f7120.jpg"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/oneloveyo!_poster.png"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/c0c3fd29324129.55edea46f1ecc.jpg"/>
-        </div>
-      </div>
-      <div class="image-box">
-        <div class="image-fill">
-          <img src="uploads/Pruebas/tumblr_nqptrsNv5O1t7cmmpo1_1280.png"/>
+        <div id="upload-block-menu">
+          <div id="upload-cancel-button">Cancel</div>
         </div>
       </div>
     </div>
-    <!-- ################################### -->
     <!-- ################################### -->
     <script src="js/jQuery.js"></script>
     <script type="text/javascript" src="js/home.js"></script>

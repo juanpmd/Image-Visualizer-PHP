@@ -4,6 +4,8 @@ var app = angular.module('WebApp', []);
 app.controller("WebAppController", ['$scope', '$http',
   function($scope, $http){
 
+    $scope.imagenes = [{ name: "uploads/juanpmd0101.jpg", type: "jpg"},{ name: "uploads/juanpmd0102.jpg", type: "jpg"},{ name: "uploads/juanpmd0103.png", type: "png"}];
+
     //------------------->>>
     $scope.UserLogout = function(){
       $http.post('WebApi.php?val=Logout').success(function(data) {
@@ -27,8 +29,13 @@ app.controller("WebAppController", ['$scope', '$http',
 			});
     }
     //------------------->>>
-    $scope.upload = function(Uploadfile){
-      console.log("puedo entrar aqui: " + Uploadfile);
+    $scope.getImages = function(){
+      $http.get('api.php?val=allFiles').success(function(data) {
+    		$scope.imagenes = data;
+    		console.log(data);
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
     }
     //------------------->>>
 

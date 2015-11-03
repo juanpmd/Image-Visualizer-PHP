@@ -63,10 +63,10 @@ function printAllImages($user) {
 }
 
 //------------------------------------------------------------->>>
-function insertNewImage($user, $contact){
+/*function insertNewImage($user, $contact){
 	$result = $user->addNewImages($contact);
 	return $result;
-}
+}*/
 //-------------------------->>>
 //-------------------------->>>
 

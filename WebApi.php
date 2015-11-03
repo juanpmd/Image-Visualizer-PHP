@@ -35,7 +35,7 @@
       }
     }
     //-------------------------->>>
-    private function UploadFile(){
+    /*private function UploadFile(){
       if ($this->get_request_method () != "POST") {
   			$this->response ( '', 406 );
   		}
@@ -49,8 +49,23 @@
       } else {
         $this->response('', 404 );
       }
-    }
+    }*/
     //-------------------------->>>
+    private function allFiles() {
+  		if ($this->get_request_method () != "GET") {
+  			$this->response ( '', 406 );
+  		}
+  		$phonebook = new Files();
+  		$result = $phonebook->showAllImages();
+
+  		if($result->num_rows > 0){
+  			$array=$result->fetch_all(MYSQLI_ASSOC);
+  			$jsonVar = $this->json($array);
+  			$this->response($jsonVar, 200 );
+  		}else {
+  			$this->response('', 204 );
+  		}
+  	}
     //-------------------------->>>
     //-------------------------->>>
   }
