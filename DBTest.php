@@ -15,7 +15,8 @@ $file = new Files ();
 
 $nuevaimg = ["username_id"=>"prueba","name"=>"parrilla_15.jpg"];
 //insertNewImage($file, $nuevaimg);
-printAllImages($file);
+//printAllImages($file);
+printAllImages2($file,"juanpmd");
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -49,7 +50,7 @@ function UserState($user,$username,$password){
 	$result=$user->getUserState($username,$password);
 	echo $result;
 }
-//-------------------------->>>
+//--------IMPRIMIR TODAS LAS IMAGENES EXISTENTES------------------>>>
 function printAllImages($user) {
 	$result=$user->showAllImages();
 	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
@@ -61,7 +62,18 @@ function printAllImages($user) {
     echo "------------------------------------------->>><br>";
 	}
 }
-
+//--------IMPRIMIR IMAGENES DE UN USUARIO------------------------------->>>
+function printAllImages2($user,$id) {
+	$result=$user->showAllImages2($id);
+	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
+	foreach ($contactArray as $contact) {
+		echo "ID: ", $contact['id'],"<br>";
+    echo "username_id: ", $contact['username_id'],"<br>";
+		echo "name: ", $contact['name'],"<br>";
+    echo "creationdate: ", $contact['creationdate'],"<br>";
+    echo "------------------------------------------->>><br>";
+	}
+}
 //------------------------------------------------------------->>>
 /*function insertNewImage($user, $contact){
 	$result = $user->addNewImages($contact);

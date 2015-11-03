@@ -58,6 +58,10 @@ if (!isset($_SESSION["username"]) ){
         <p>{{data.type}}</p></div>
       </div>
 
+      <!--<div ng-repeat="data in imagenes">
+        <p>{{ data.name }}</p>
+      </div>-->
+
     </div>
     <!-- ################################### -->
     <div id="upload-page" class="hidden">

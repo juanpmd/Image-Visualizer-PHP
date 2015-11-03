@@ -34,39 +34,30 @@
         $this->response('', 404 );
       }
     }
-    //-------------------------->>>
-    /*private function UploadFile(){
-      if ($this->get_request_method () != "POST") {
-  			$this->response ( '', 406 );
-  		}
-  		$usuario = new Files();
-  		$data = json_decode(file_get_contents('php://input'),true);
-      $result=$usuario->addNewImages($data["username"],$data["password"]);
-      if ($result == "yes"){
-        session_start();
-        $_SESSION["username"] = $data["username"];
-        $this->response('', 200 );
-      } else {
-        $this->response('', 404 );
-      }
-    }*/
-    //-------------------------->>>
+    //--------DEVUELVE TODAS LAS IMAGENES DE UN USUARIO------------------>>>
     private function allFiles() {
+      session_start();
   		if ($this->get_request_method () != "GET") {
   			$this->response ( '', 406 );
   		}
   		$phonebook = new Files();
-  		$result = $phonebook->showAllImages();
+  		$result = $phonebook->showAllImages($_SESSION["username"]);
 
   		if($result->num_rows > 0){
   			$array=$result->fetch_all(MYSQLI_ASSOC);
   			$jsonVar = $this->json($array);
   			$this->response($jsonVar, 200 );
   		}else {
+        echo "no llego";
   			$this->response('', 204 );
   		}
   	}
-    //-------------------------->>>
+    //---------PARA FUNCION ALLFILES()------------->>>
+    private function json($data) {
+  		if (is_array ( $data )) {
+  			return json_encode ( $data );
+  		}
+  	}
     //-------------------------->>>
   }
   $api = new WebAPI();
