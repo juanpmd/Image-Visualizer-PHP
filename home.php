@@ -55,7 +55,7 @@ if (!isset($_SESSION["username"]) ){
           <img ng-src="{{ data.name }}"/>
         </div>
         <div class="image-info-box">
-        <p>{{data.type}}</p></div>
+        <p id="image-info-datatype">{{ data.datatype | uppercase}}</p></div>
       </div>
 
       <!--<div ng-repeat="data in imagenes">
