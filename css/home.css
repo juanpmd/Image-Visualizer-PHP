@@ -161,28 +161,70 @@ main {
   background: white;
   top: calc(50% - 200px);
   right: calc(50% - 300px);
+  border-radius: 5px;
 }
 #upload-block-data {
   width: 100%; height: 350px;
   position: absolute;
   top: 0; left: 0;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  overflow-x: scroll;
 }
-#upload-block-menu {
-  width: 100%; height: 50px;
+#upload-block-data tbody{
+  width: 100%; height: 350px;
   position: absolute;
-  border-top: 2px solid #f2f2f2;
+  top: 0; left: 0;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  overflow-x: scroll;
+}
+#upload-table-block {
+  position: relative;
+  border-bottom: 1px solid #f2f2f2;
+  height: 40px; width: calc(100% - 4px);
+  display: block;
+}
+
+
+#upload-table-block td{
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 400; font-size: 15px;
+  padding: 11.5px;
+}
+.upload-image-size {
+  width: 100px;
+  right: 0;
+}
+.upload-image-name {
+  width: 500px;
+}
+
+
+
+#upload-block-menu {
+  width: 100%; height: 60px;
+  position: absolute;
+  border-top: 1px solid #e6e0e0;
   bottom: 0; left: 0;
   background: #f1f1f1;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 #upload-cancel-button {
-  margin: 5px;
+  margin: 10px;
   height: 40px; width: 100px;
   background: #0097f7;
   color: #ffffff;
   text-align: center;
   cursor: pointer;
-  position: absolute;
-  right: 0;
+  position: absolute; right: 0;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;
+  border-radius: 5px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 400; font-size: 15px;
 }
 #upload-cancel-button:hover {
   background: #0469a8;
@@ -192,4 +234,27 @@ main {
   font-weight: 400; font-size: 14px;
   margin: 9.2px;
   position: absolute;
+}
+#upload-chosefiles-button{
+  position: absolute;
+  margin: 21px;
+}
+#upload-allfiles-button{
+  margin: 10px;
+  height: 40px; width: 100px;
+  background: #0097f7;
+  position: absolute;
+  right: 110px;
+  border-radius: 5px;
+  color: #ffffff;
+  outline: none; border: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 400; font-size: 15px;
+  cursor: pointer;
+}
+#upload-allfiles-button:disabled {
+  display: none;
+}
+#upload-allfiles-button:hover {
+  background: #0469a8;
 }

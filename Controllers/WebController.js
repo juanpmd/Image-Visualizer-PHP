@@ -1,8 +1,8 @@
 
-var app = angular.module('WebApp', []);
+var app = angular.module('WebApp', ['angularFileUpload']);
 
-app.controller("WebAppController", ['$scope', '$http',
-  function($scope, $http){
+app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
+  function($scope, $http, FileUploader){
 
     $scope.imagenes = [];
 
@@ -39,5 +39,15 @@ app.controller("WebAppController", ['$scope', '$http',
     }
     //------------------->>>
     $scope.getImages();
+
+
+
+
+
+    //#############################----->>>>
+    var uploader = $scope.uploader = new FileUploader({
+      url: 'UploadApi.php'
+    });
+    //#############################----->>>>
   }
 ]);

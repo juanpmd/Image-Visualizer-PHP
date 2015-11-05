@@ -1,4 +1,16 @@
 <?php
+
+require_once 'Models/Files.php';
+
+if ( !empty( $_FILES ) ) {
+
+    $tempPath = $_FILES[ 'file' ][ 'tmp_name' ];
+    $uploadPath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $_FILES[ 'file' ][ 'name' ];
+    move_uploaded_file( $tempPath, $uploadPath );
+
+} else {}
+//--------------------------------------------->>>
+/*
 session_start();
 
 $target_file = "uploads/" . basename($_FILES["fileToUpload"]["name"]);
@@ -37,5 +49,6 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+*/
 //--------------------------------------------->>>
 ?>

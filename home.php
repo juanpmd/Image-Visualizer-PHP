@@ -14,6 +14,7 @@ if (!isset($_SESSION["username"]) ){
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
     <script src="Controllers/WebController.js"></script>
+    <script src="js/angular-file-upload.min.js"></script>
   </head>
   <body ng-controller="WebAppController">
     <!-- ################################### -->
@@ -32,9 +33,7 @@ if (!isset($_SESSION["username"]) ){
           <img src="img/MenuOptions.svg"/>
         </div>
       </div>
-
       <div id="upload-open-main"></div>
-
     </main>
     <!-- ################################### -->
     <div id="settings-box" class="hidden">
@@ -58,18 +57,26 @@ if (!isset($_SESSION["username"]) ){
         <p id="image-info-datatype">{{ data.datatype | uppercase}}</p></div>
       </div>
 
-      <!--<div ng-repeat="data in imagenes">
-        <p>{{ data.name }}</p>
-      </div>-->
-
     </div>
     <!-- ################################### -->
-    <div id="upload-page" class="hidden">
+    <div id="upload-page" class="">
       <div id="upload-block">
-        <div id="upload-block-data">
+        <table id="upload-block-data">
+          <tbody>
 
-        </div>
+            <tr id="upload-table-block" ng-repeat="item in uploader.queue">
+              <td class="upload-image-name">{{ item.file.name }}</td>
+              <td class="upload-image-size" ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+            </tr>
+
+          </tbody>
+        </table>
+
         <div id="upload-block-menu">
+          <input id="upload-chosefiles-button" type="file" nv-file-select="" uploader="uploader" multiple/>
+
+          <button type="button" id="upload-allfiles-button" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">Upload all</button>
+
           <div id="upload-cancel-button">Cancel</div>
         </div>
       </div>

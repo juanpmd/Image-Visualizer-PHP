@@ -13,7 +13,8 @@ if (isset($_SESSION["username"]) ){
     <link rel="stylesheet" href="css/index.css"></link>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-    <script src="http://localhost:8888/SeekInspire/Controllers/WebController.js"></script>
+    <script src="Controllers/WebController.js"></script>
+    <script src="js/angular-file-upload.min.js"></script>
   </head>
   <body>
     <div id="login-logo">
