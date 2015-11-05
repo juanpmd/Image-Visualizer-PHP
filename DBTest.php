@@ -6,8 +6,8 @@ require_once 'Models/Files.php';
 $user = new Users ();
 $file = new Files ();
 
-//$nuevaimg = ["username_id"=>"prueba","name"=>"parrilla_15.jpg"];
-//insertNewImage($file, $nuevaimg);
+$nuevaimg = ["username_id"=>"juanpmd","name"=>"uploads/parrilla_15.jpg","datatype"=>"jpg"];
+insertNewImage($file, $nuevaimg);
 printAllImages($file,"juanpmd");
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
@@ -55,10 +55,10 @@ function printAllImages($user,$id) {
 	}
 }
 //------------------------------------------------------------->>>
-/*function insertNewImage($user, $contact){
+function insertNewImage($user, $contact){
 	$result = $user->addNewImages($contact);
 	return $result;
-}*/
+}
 //-------------------------->>>
 //-------------------------->>>
 

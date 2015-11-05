@@ -59,7 +59,7 @@ if (!isset($_SESSION["username"]) ){
 
     </div>
     <!-- ################################### -->
-    <div id="upload-page" class="">
+    <div id="upload-page" class="hidden">
       <div id="upload-block">
         <table id="upload-block-data">
           <tbody>

@@ -2,7 +2,7 @@
 require_once 'DB/DB.php';
 
 class Files extends DB {
-  const INSERT_IMAGE = "insert into images(username_id,name) values (?,?)";
+  const INSERT_IMAGE = "insert into images(username_id,name,datatype) values (?,?,?)";
   const ALL_IMAGES = "select * from images where username_id=?";
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
@@ -10,7 +10,7 @@ class Files extends DB {
     $statement = $this->conn->prepare(self::INSERT_IMAGE);
     if($statement){
       if (!is_null($contact) && count($contact)>0) {
-        $statement->bind_param ("ss", $contact['username_id'], $contact['name']);
+        $statement->bind_param ("sss", $contact['username_id'], $contact['name'],$contact['datatype']);
       }
       $statement->execute();
       $result=$statement->get_result();
