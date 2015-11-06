@@ -33,7 +33,9 @@ if (!isset($_SESSION["username"]) ){
           <img src="img/MenuOptions.svg"/>
         </div>
       </div>
-      <div id="upload-open-main"></div>
+      <div id="upload-open-main">
+        <img src="img/Upload.svg" />
+      </div>
     </main>
     <!-- ################################### -->
     <div id="settings-box" class="hidden">
@@ -49,12 +51,12 @@ if (!isset($_SESSION["username"]) ){
     <!-- ################################### -->
     <div id="images-section">
 
-      <div ng-repeat="data in imagenes" class="image-box" >
+      <div ng-repeat="data in imagenes" class="image-box" id="image-box-size">
         <div class="image-fill">
           <img ng-src="{{ data.name }}"/>
         </div>
         <div class="image-info-box">
-        <p id="image-info-datatype">{{ data.datatype | uppercase}}</p></div>
+        <p class="image-info-datatype">{{ data.datatype | uppercase}}</p></div>
       </div>
 
     </div>
@@ -62,6 +64,11 @@ if (!isset($_SESSION["username"]) ){
     <div id="upload-page" class="hidden">
       <div id="upload-block">
         <table id="upload-block-data">
+
+          <button id="info-upload-beforeimage" ng-disabled="uploader.queue.length">
+            Upload a Image here
+          </button>
+
           <tbody>
 
             <tr id="upload-table-block" ng-repeat="item in uploader.queue">
@@ -77,7 +84,7 @@ if (!isset($_SESSION["username"]) ){
 
           <button type="button" id="upload-allfiles-button" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">Upload all</button>
 
-          <div id="upload-cancel-button">Cancel</div>
+          <div id="upload-cancel-button" ng-click="uploader.clearQueue()">Cancel</div>
         </div>
       </div>
     </div>
