@@ -4,6 +4,7 @@ require_once 'DB/DB.php';
 class Files extends DB {
   const INSERT_IMAGE = "insert into images(username_id,name,datatype) values (?,?,?)";
   const ALL_IMAGES = "select * from images where username_id=?";
+  const DELETE_IMAGE = "delete from images where id=?";
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
     $this->open_connection();
@@ -31,6 +32,11 @@ class Files extends DB {
       die("algo salio mal");
     }
   }
+  //---------------------------------->>>
+  public function deleteImageById($id){
+		$arguments = ["id"=>$id];
+		$result=$this->query(self::DELETE_IMAGE,$arguments);
+	}
   //---------------------------------->>>
 }
 ?>

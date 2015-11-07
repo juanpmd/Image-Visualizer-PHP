@@ -9,7 +9,7 @@ if (!isset($_SESSION["username"]) ){
 <html ng-app="WebApp">
   <head>
     <meta charset="utf-8">
-    <title>Seek Inspire</title>
+    <title>Home</title>
     <link rel="stylesheet" href="css/home.css"></link>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
@@ -25,6 +25,10 @@ if (!isset($_SESSION["username"]) ){
           <input type="text" name="name" placeholder="Search for tags">
         </form>
       </div>
+
+      <div>
+        <button ng-click="CheckDelete()" type="button">Delete</button>
+      </div>
     </nav>
     <!-- ################################### -->
     <main>
@@ -36,6 +40,7 @@ if (!isset($_SESSION["username"]) ){
       <div id="upload-open-main">
         <img src="img/Upload.svg" />
       </div>
+
     </main>
     <!-- ################################### -->
     <div id="settings-box" class="hidden">
@@ -50,12 +55,13 @@ if (!isset($_SESSION["username"]) ){
     </div>
     <!-- ################################### -->
     <div id="images-section">
-
+      <!-- ng-hide="imagenes.length" -->
       <div ng-repeat="data in imagenes" class="image-box" id="image-box-size">
-        <div class="image-fill">
+        <div class="image-fill" >
           <img ng-src="{{ data.name }}"/>
         </div>
         <div class="image-info-box">
+        <input ng-model="data.select" type="checkbox" class="checkbox-image">
         <p class="image-info-datatype">{{ data.datatype | uppercase}}</p></div>
       </div>
 
@@ -66,7 +72,8 @@ if (!isset($_SESSION["username"]) ){
         <table id="upload-block-data">
 
           <button id="info-upload-beforeimage" ng-disabled="uploader.queue.length">
-            Upload a Image here
+            <img src="img/UploadImage.svg"/>
+            <p>Upload image here</p>
           </button>
 
           <tbody>

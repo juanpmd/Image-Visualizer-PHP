@@ -1,11 +1,11 @@
 var widthimage = parseInt($("#images-section").css("width"), 10);
-widthimage = (widthimage * 0.12285) - 2;
+widthimage = (widthimage * 0.14666666667) - 2;
 var heightimage = widthimage + 30;
 $(".image-box").css("width", widthimage);
 $(".image-box").css("height", heightimage);
 
 $(document).ready(function(){
-  
+
   $("#setting-button").click(function(){
     $("#settings-box").toggleClass("hidden");
   });
