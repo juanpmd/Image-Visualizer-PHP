@@ -6,9 +6,7 @@ require_once 'Models/Files.php';
 $user = new Users ();
 $file = new Files ();
 
-$nuevaimg = ["username_id"=>"juanpmd","name"=>"uploads/parrilla_15.jpg","datatype"=>"jpg"];
-insertNewImage($file, $nuevaimg);
-printAllImages($file,"juanpmd");
+GetImage($file,8);
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -58,6 +56,18 @@ function printAllImages($user,$id) {
 function insertNewImage($user, $contact){
 	$result = $user->addNewImages($contact);
 	return $result;
+}
+//-------------------------->>>
+function GetImage($user, $id){
+	$result=$user->getImagebyID($id);
+	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
+	foreach ($contactArray as $contact) {
+		echo "ID: ", $contact['id'],"<br>";
+    echo "username_id: ", $contact['username_id'],"<br>";
+		echo "name: ", $contact['name'],"<br>";
+    echo "creationdate: ", $contact['creationdate'],"<br>";
+    echo "------------------------------------------->>><br>";
+	}
 }
 //-------------------------->>>
 //-------------------------->>>

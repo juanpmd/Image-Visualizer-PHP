@@ -39,7 +39,7 @@ if (isset($_SESSION["username"]) ){
         <button ng-click="login()" id="login-button">Log in</button>
       </form>
       <div id="new-user-box">
-        <p>Dont have an account yes? <a href="">Sign up</a></p>
+        <p>Dont have an account yet? <a href="">Sign up</a></p>
       </div>
     </div>
   </body>

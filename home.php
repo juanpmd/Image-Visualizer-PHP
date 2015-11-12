@@ -26,7 +26,8 @@ if (!isset($_SESSION["username"]) ){
         </form>
       </div>
 
-      <div>
+      <div id="delete-box">
+        <p>Delete Selected</p>
         <button ng-click="CheckDelete()" type="button">Delete</button>
       </div>
     </nav>

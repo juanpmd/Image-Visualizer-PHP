@@ -290,3 +290,27 @@ main {
 #upload-allfiles-button:hover {
   background: #0469a8;
 }
+#delete-box {
+  width: 100%; height: 110px;
+  border-bottom: 1px solid #131c2a;
+}
+#delete-box p{
+  text-align: center;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 300; font-size: 18px;
+  color: #4c678c;
+  margin-top: 20px;
+}
+#delete-box button{
+  width: 70%; height: 40px;
+  background: #1641f7;
+  outline: none; border: none;
+  border-radius: 5px;
+  margin: 20px 15% 0 15%;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 300; font-size: 15px;
+  color: white;
+}
+#delete-box button:hover{
+  background: #1135cf;
+}
