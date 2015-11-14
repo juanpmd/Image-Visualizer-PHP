@@ -97,6 +97,10 @@ if (!isset($_SESSION["username"]) ){
       </div>
     </div>
     <!-- ################################### -->
+    <div id="image_info_page" class="hidden">
+
+    </div>
+    <!-- ################################### -->
     <script src="js/jQuery.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
   </body>

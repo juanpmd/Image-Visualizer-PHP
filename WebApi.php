@@ -65,6 +65,7 @@
   		}
   		$file = new Files();
   		$data = json_decode(file_get_contents('php://input'),true);
+      $file->deleteImageCategoriesById($data["id"]);
   		$file->deleteImageById($data["id"]);
   		$this->response('', 200 );
   	}

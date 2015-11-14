@@ -6,7 +6,10 @@ require_once 'Models/Files.php';
 $user = new Users ();
 $file = new Files ();
 
-GetImage($file,8);
+#GetImage($file,8);
+echo "siii <br>";
+DeleteImageCategories($file,19);
+echo "siii";
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -69,7 +72,11 @@ function GetImage($user, $id){
     echo "------------------------------------------->>><br>";
 	}
 }
-//-------------------------->>>
+//----------ELIMINA TODAS LAS CATEGORIAS DE UNA IMAGEN---------------->>>
+function DeleteImageCategories($user, $id){
+	$result=$user->deleteImageCategoriesById($id);
+	echo "Funciono eliminar categorias";
+}
 //-------------------------->>>
 
 ?>

@@ -19,6 +19,9 @@ $(document).ready(function(){
     $("#upload-page").fadeOut(200).addClass("hidden");
   });
 
+  $("#image-fill-id").click(function(){
+    $("#image_info_page").fadeIn(200).removeClass("hidden");
+  });
 
 
 });

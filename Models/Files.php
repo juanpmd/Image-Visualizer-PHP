@@ -6,6 +6,7 @@ class Files extends DB {
   const ALL_IMAGES = "select * from images where username_id=?";
   const DELETE_IMAGE = "delete from images where id=?";
   const GET_IMAGE = "select * from images where id=?";
+  const DELETE_IMAGE_CATEGORIES = "delete from ImagexCategories where Image_ID=?";
 
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
@@ -49,6 +50,11 @@ class Files extends DB {
       die("algo salio mal");
     }
   }
+  //-------------ELIMINAR CATEGORIAS RELACIONADAS A UNA IMAGEN----------------->>>
+  public function deleteImageCategoriesById($id){
+		$arguments = ["id"=>$id];
+		$result=$this->query(self::DELETE_IMAGE_CATEGORIES,$arguments);
+	}
   //---------------------------------->>>
 }
 ?>

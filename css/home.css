@@ -314,3 +314,9 @@ main {
 #delete-box button:hover{
   background: #1135cf;
 }
+#image_info_page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: red;
+}
