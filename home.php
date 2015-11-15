@@ -28,7 +28,8 @@ if (!isset($_SESSION["username"]) ){
 
       <div id="delete-box">
         <p>Delete Selected</p>
-        <button ng-click="CheckDelete()" type="button">Delete</button>
+        <button id="image-delete-click" ng-click="CheckDelete()" type="button">Delete</button>
+        <button id="image-edit-box" ng-click="" type="button">Edit</button>
       </div>
     </nav>
     <!-- ################################### -->
@@ -56,11 +57,10 @@ if (!isset($_SESSION["username"]) ){
     </div>
     <!-- ################################### -->
     <div id="images-section">
-      <!-- ng-hide="imagenes.length" -->
       <div ng-repeat="data in imagenes" class="image-box" id="image-box-size">
-        <div class="image-fill" >
+        <button class="image-fill" ng-click="Sacar_Info(data)">
           <img ng-src="{{ data.name }}"/>
-        </div>
+        </button>
         <div class="image-info-box">
         <input ng-model="data.select" type="checkbox" class="checkbox-image">
         <p class="image-info-datatype">{{ data.datatype | uppercase}}</p></div>
@@ -98,7 +98,16 @@ if (!isset($_SESSION["username"]) ){
     </div>
     <!-- ################################### -->
     <div id="image_info_page" class="hidden">
+      <div id="image_info">
+        <div id="image_info_title">
+          <p>Imagen</p>
+          <button type="button" id="image-info-page-close">Close</button>
+        </div>
+        <div id="image_info_body">
+          <img ng-src="{{ imagendetalle }}" alt="" />
+        </div>
 
+      </div>
     </div>
     <!-- ################################### -->
     <script src="js/jQuery.js"></script>

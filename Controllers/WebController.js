@@ -7,6 +7,7 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     $scope.imagenes = [];
     $scope.select = false;
     $scope.estado = 0;
+    $scope.imagendetalle = "";
 
     //--------FUNCIONES PARA METODO ELIMINAR CON CHECKBOXS----------->>>
     $scope.deleteCheckValue = function(data) {
@@ -58,7 +59,16 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     		console.log('Error: ' + data);
     	});
     }
+    //------CLICK EN IMAGEN PARA ABRIR PANEL DE SU INFORMACION------------->>>
+    $scope.Sacar_Info = function(data){
+      console.log(data.id);
+      $scope.imagendetalle = ""
+      $scope.imagendetalle = data.name;
+      $("#image_info_page").fadeIn(200).removeClass("hidden");
+    }
     //------------------->>>
+
+
     $scope.getImages();
 
 
