@@ -29,8 +29,8 @@ if (!isset($_SESSION["username"]) ){
       <div id="delete-box">
         <p>Delete Selected</p>
         <button id="image-delete-click" ng-click="CheckDelete()" type="button">Delete</button>
-        <button id="image-edit-box" ng-click="" type="button">Edit</button>
       </div>
+
     </nav>
     <!-- ################################### -->
     <main>
@@ -106,6 +106,41 @@ if (!isset($_SESSION["username"]) ){
         <div id="image_info_body">
           <img ng-src="{{ imagendetalle }}" alt="" />
         </div>
+      </div>
+    </div>
+    <!-- ################################### -->
+    <div id="image-categories" class="hidden">
+      <div id="search-box">
+        <form id="form-search">
+          <img src="img/Add.svg"/>
+          <input type="text" name="name" placeholder="Add New Category">
+        </form>
+      </div>
+
+      <p>Categories</p>
+      <div id="image-categories-box">
+
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
+        <div class="category"></div>
 
       </div>
     </div>

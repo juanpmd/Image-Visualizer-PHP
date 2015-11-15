@@ -65,10 +65,9 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
       $scope.imagendetalle = ""
       $scope.imagendetalle = data.name;
       $("#image_info_page").fadeIn(200).removeClass("hidden");
+      $("#image-categories").animate({width:'toggle'},100).removeClass("hidden");
     }
     //------------------->>>
-
-
     $scope.getImages();
 
 

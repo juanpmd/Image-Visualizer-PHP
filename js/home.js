@@ -18,12 +18,10 @@ $(document).ready(function(){
   $("#upload-cancel-button").click(function(){
     $("#upload-page").fadeOut(200).addClass("hidden");
   });
-
-  $("#image-edit-box").click(function(){
-    $("#image_info_page").fadeIn(200).removeClass("hidden");
-  });
+  //-------------Salir de Vista Previa Imagen----------->>>
   $("#image-info-page-close").click(function(){
     $("#image_info_page").fadeOut(200).addClass("hidden");
+    $("#image-categories").animate({width:'toggle'},100).addClass("hidden");
   });
 
 });
