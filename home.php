@@ -42,7 +42,6 @@ if (!isset($_SESSION["username"]) ){
       <div id="upload-open-main">
         <img src="img/Upload.svg" />
       </div>
-
     </main>
     <!-- ################################### -->
     <div id="settings-box" class="hidden">
@@ -121,6 +120,7 @@ if (!isset($_SESSION["username"]) ){
       <div id="image-categories-box" >
         <div class="category" ng-repeat="data in categories">
           <p>{{data.name}}</p>
+          <img ng-click="DeleteCategory(data)" src="img/Delete.svg"/>
         </div>
       </div>
 

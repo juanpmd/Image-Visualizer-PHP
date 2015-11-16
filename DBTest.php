@@ -6,8 +6,9 @@ require_once 'Models/Files.php';
 $user = new Users ();
 $file = new Files ();
 
-$data = ["Category_ID"=>19, "Image_ID"=>27];
-getCategoryName($file, "tipografia");
+echo "inicio <br>";
+DeleteCategory($file, 46); //category, image
+echo "llego <br>";
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -103,6 +104,12 @@ function getCategoryName($user, $name){
 function insertNewImageCategoryRelation($user, $category, $temp){
 	$result = $user->addImageCategoryRelation($category, $temp);
 	return $result;
+}
+//-------------------------->>>
+
+function DeleteCategory($user, $id){
+	$result=$user->deleteImageCategoryRelation($id);
+	echo "Funciono eliminar categorias";
 }
 //-------------------------->>>
 ?>

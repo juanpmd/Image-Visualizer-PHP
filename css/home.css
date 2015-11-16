@@ -410,9 +410,6 @@ main {
   color: #ffffff;
   cursor: pointer;
 }
-.category:hover {
-  background: #1036d7;
-}
 .category p{
   color: #ffffff;
   width: 224px;
@@ -422,4 +419,19 @@ main {
   position: absolute;
   margin: 11px 0 11px 0;
   text-align: center;
+}
+.category img{
+  width: 15px; height: 15px;
+  right: 0;
+  padding: 12.5px;
+  position: absolute;
+  background: #1641f7;
+  border-left: 1px solid #1236d1;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.category img:hover{
+  background: #1439d6;
 }

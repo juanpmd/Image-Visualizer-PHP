@@ -11,6 +11,7 @@ class Files extends DB {
   const INSERT_CATEGORY = "insert into Categories(name) values (?)";
   const GET_CATEGORY_NAME = "select * from Categories where name=?";
   const INSERT_IMAGECATEGORY = "insert into ImagexCategories(Category_ID,Image_ID) values (?,?)";
+  const DELETE_IMAGECATEGORY = "delete from ImagexCategories where ID=?";
 
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
@@ -113,6 +114,12 @@ class Files extends DB {
     }
     $this->close_connection();
     return $result;
+  }
+  //---------------------------------->>>
+  public function deleteImageCategoryRelation($id){
+    //$arguments = ["Category_ID"=>45, "Image_ID"=>22];
+    $arguments = ["ID"=>$id];
+		$result=$this->query(self::DELETE_IMAGECATEGORY,$arguments);
   }
   //---------------------------------->>>
 }

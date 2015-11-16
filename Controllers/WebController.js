@@ -79,6 +79,7 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
         id: $scope.imagenid
       }).success(function(data) {
     		$scope.categories = data;
+        //console.log(data);
     	}).error(function(data) {
     		console.log('Error: ' + data);
     	});
@@ -96,12 +97,19 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     		console.log('Error: ' + data);
     	});
     }
-
+    //------------------->>>
+    $scope.DeleteCategory = function(data){
+      console.log(data.ID);
+      $http.post('WebApi.php?val=DeleteCategorybyID',{
+        id: data.ID
+      }).success(function(data) {
+        $scope.Actualizar_Categorias();
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
+    }
     //------------------->>>
     $scope.getImages();
-
-
-
 
     //#############################----->>>>
     var uploader = $scope.uploader = new FileUploader({
