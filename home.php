@@ -100,7 +100,7 @@ if (!isset($_SESSION["username"]) ){
     <div id="image_info_page" class="hidden">
       <div id="image_info">
         <div id="image_info_title">
-          <p>Imagen</p>
+          <p>Imagen {{imagenid}}</p>
           <button type="button" id="image-info-page-close">Close</button>
         </div>
         <div id="image_info_body">
@@ -112,37 +112,18 @@ if (!isset($_SESSION["username"]) ){
     <div id="image-categories" class="hidden">
       <div id="search-box">
         <form id="form-search">
-          <img src="img/Add.svg"/>
-          <input type="text" name="name" placeholder="Add New Category">
+          <img ng-click="AddCategory()" src="img/Add.svg"/>
+          <input type="text" name="name" ng-model="idimagen" placeholder="Add New Category">
         </form>
       </div>
 
-      <p>Categories</p>
-      <div id="image-categories-box">
-
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-        <div class="category"></div>
-
+      <p id="category-title">Categories</p>
+      <div id="image-categories-box" >
+        <div class="category" ng-repeat="data in categories">
+          <p>{{data.name}}</p>
+        </div>
       </div>
+
     </div>
     <!-- ################################### -->
     <script src="js/jQuery.js"></script>

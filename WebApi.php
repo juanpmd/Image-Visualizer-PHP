@@ -70,6 +70,23 @@
   		$this->response('', 200 );
   	}
     //----------------------------->>>
+    private function allCategories() {
+      if ($this->get_request_method () != "POST") {
+  			$this->response ( '', 406 );
+  		}
+  		$usuario = new Files();
+  		$data = json_decode(file_get_contents('php://input'),true);
+      $result=$usuario->getCategoriesbyID($data["id"]);
+      if($result->num_rows > 0){
+  			$array=$result->fetch_all(MYSQLI_ASSOC);
+  			$jsonVar = $this->json($array);
+  			$this->response($jsonVar, 200 );
+  		}else {
+        echo "no llego";
+  			$this->response('', 204 );
+  		}
+  	}
+    //----------------------------->>>
   }
   $api = new WebAPI();
   $api->processApi();

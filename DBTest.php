@@ -6,10 +6,7 @@ require_once 'Models/Files.php';
 $user = new Users ();
 $file = new Files ();
 
-#GetImage($file,8);
-echo "siii <br>";
-DeleteImageCategories($file,19);
-echo "siii";
+getCategoriesUser($file,22);
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -76,6 +73,17 @@ function GetImage($user, $id){
 function DeleteImageCategories($user, $id){
 	$result=$user->deleteImageCategoriesById($id);
 	echo "Funciono eliminar categorias";
+}
+//-------------------------->>>
+function getCategoriesUser($user, $id){
+	$result=$user->getCategoriesbyID($id);
+	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
+	foreach ($contactArray as $contact) {
+		echo "ID_Relacion: ", $contact['ID'],"<br>";
+    echo "Name Category: ", $contact['name'],"<br>";
+		echo "Category_ID: ", $contact['IDCategoria'],"<br>";
+    echo "------------------------------------------->>><br>";
+	}
 }
 //-------------------------->>>
 

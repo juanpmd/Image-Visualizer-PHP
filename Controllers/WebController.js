@@ -7,7 +7,11 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     $scope.imagenes = [];
     $scope.select = false;
     $scope.estado = 0;
+
     $scope.imagendetalle = "";
+    $scope.imagenid = 0;
+    $scope.categories = [];
+
 
     //--------FUNCIONES PARA METODO ELIMINAR CON CHECKBOXS----------->>>
     $scope.deleteCheckValue = function(data) {
@@ -54,19 +58,35 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     $scope.getImages = function(){
       $http.get('WebApi.php?val=allFiles').success(function(data) {
     		$scope.imagenes = data;
-    		//console.log(data);
     	}).error(function(data) {
     		console.log('Error: ' + data);
     	});
     }
     //------CLICK EN IMAGEN PARA ABRIR PANEL DE SU INFORMACION------------->>>
     $scope.Sacar_Info = function(data){
-      console.log(data.id);
       $scope.imagendetalle = ""
+      $scope.imagenid = data.id;
       $scope.imagendetalle = data.name;
       $("#image_info_page").fadeIn(200).removeClass("hidden");
       $("#image-categories").animate({width:'toggle'},100).removeClass("hidden");
+
+      $scope.categories = [];
+      //console.log($scope.imagenid);
+      $http.post('WebApi.php?val=allCategories',{
+        id: $scope.imagenid
+      }).success(function(data) {
+        //console.log($scope.imagenid);
+    		$scope.categories = data;
+        console.log(data);
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
     }
+    //------FUNCION PARA AGREGAR CATEGORIAS A UNA IMAGEN------------->>>
+    $scope.AddCategory = function(){
+
+    }
+
     //------------------->>>
     $scope.getImages();
 

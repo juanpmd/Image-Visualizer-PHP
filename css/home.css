@@ -386,7 +386,7 @@ main {
   bottom: 0;
   left: 0;
 }
-#image-categories p {
+#category-title {
   text-align: center;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 300;
@@ -406,7 +406,20 @@ main {
   background: #1641f7;
   margin: 10px 0;
   border-radius: 5px;
+  border: 0.5px solid #182234;
+  color: #ffffff;
+  cursor: pointer;
 }
 .category:hover {
   background: #1036d7;
+}
+.category p{
+  color: #ffffff;
+  width: 224px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  position: absolute;
+  margin: 11px 0 11px 0;
+  text-align: center;
 }
