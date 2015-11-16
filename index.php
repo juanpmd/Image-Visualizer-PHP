@@ -28,8 +28,8 @@ if (isset($_SESSION["username"]) ){
             <img src="img/UserLogin.svg" alt="">
           </div>
           <input ng-model="username" autofocus="true" class="input-field" type="text" name="user" placeholder="Username">
-
         </div>
+
         <div class="form-group">
           <div class="form-image">
             <img src="img/KeyCHain.svg" alt="">
@@ -39,7 +39,7 @@ if (isset($_SESSION["username"]) ){
         <button ng-click="login()" id="login-button">Log in</button>
       </form>
       <div id="new-user-box">
-        <p>Dont have an account yet? <a href="">Sign up</a></p>
+        <p>Dont have an account yet? <a href="Register.php">Sign up</a></p>
       </div>
     </div>
   </body>

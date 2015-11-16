@@ -97,7 +97,7 @@ class Files extends DB {
       die("algo salio mal");
     }
   }
-  //---------------------------------->>>
+  //--------------AGREGAR RELACION ENTRE IMAGEN Y CATEGORIA-------------------->>>
   public function addImageCategoryRelation($category, $temp){
     $contact = ["Category_ID"=>$category, "Image_ID"=>$temp];
     $this->open_connection();
@@ -115,9 +115,8 @@ class Files extends DB {
     $this->close_connection();
     return $result;
   }
-  //---------------------------------->>>
+  //-------------ELIMINA UNA RELACION DE CATEGORIA CON IMAGEN--------------------->>>
   public function deleteImageCategoryRelation($id){
-    //$arguments = ["Category_ID"=>45, "Image_ID"=>22];
     $arguments = ["ID"=>$id];
 		$result=$this->query(self::DELETE_IMAGECATEGORY,$arguments);
   }

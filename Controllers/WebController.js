@@ -54,6 +54,20 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
         $scope.password="";
 			});
     }
+    //--------FUNCION PARA REGISTRAR UN USUARIO----------->>>
+    $scope.Registrarse = function(){
+      $http.post('WebApi.php?val=addNewUser',{
+        username: $scope.username2,
+        name: $scope.nombre2,
+        password: $scope.password2,
+        email: $scope.email2
+      }).success(function(data) {
+        window.location.replace("http://localhost:8888/SeekInspire/index.php");
+				console.log(data);
+			}).error(function(data) {
+				console.log('Error: ' + data);
+			});
+    }
     //-------FUNCION PARA DESPLEGAR IMAGENES EN PANTALLA------------>>>
     $scope.getImages = function(){
       $http.get('WebApi.php?val=allFiles').success(function(data) {

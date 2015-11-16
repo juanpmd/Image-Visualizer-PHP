@@ -18,6 +18,16 @@
         session_unset();
         session_destroy();
     }
+    //---------FUNCION PARA AGREGAR UN USUARIO----------------->>>
+    private function addNewUser() {
+      if ($this->get_request_method () != "POST") {
+  			$this->response ( '', 406 );
+  		}
+  		$users = new Users();
+  		$data = json_decode(file_get_contents('php://input'),true);
+  		$users->addNewUser($data);
+  		$this->response('', 200 );
+    }
     //--------FUNCION PARA VALIDAR UN USUARIO PARA LOGIN------------------>>>
     private function ValidacionUsuario(){
       if ($this->get_request_method () != "POST") {
