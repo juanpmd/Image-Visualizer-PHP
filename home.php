@@ -100,7 +100,7 @@ if (!isset($_SESSION["username"]) ){
     <div id="image_info_page" class="hidden">
       <div id="image_info">
         <div id="image_info_title">
-          <p>Imagen {{imagenid}}</p>
+          <p>Imagen</p>
           <button type="button" id="image-info-page-close">Close</button>
         </div>
         <div id="image_info_body">
@@ -113,7 +113,7 @@ if (!isset($_SESSION["username"]) ){
       <div id="search-box">
         <form id="form-search">
           <img ng-click="AddCategory()" src="img/Add.svg"/>
-          <input type="text" name="name" ng-model="idimagen" placeholder="Add New Category">
+          <input ng-model="categoryname" type="text" name="name" ng-model="idimagen" placeholder="Add New Category">
         </form>
       </div>
 

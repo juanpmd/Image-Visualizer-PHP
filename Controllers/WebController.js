@@ -70,14 +70,15 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
       $("#image_info_page").fadeIn(200).removeClass("hidden");
       $("#image-categories").animate({width:'toggle'},100).removeClass("hidden");
 
+      $scope.Actualizar_Categorias();
+    }
+    //------------------->>>
+    $scope.Actualizar_Categorias = function(){
       $scope.categories = [];
-      //console.log($scope.imagenid);
       $http.post('WebApi.php?val=allCategories',{
         id: $scope.imagenid
       }).success(function(data) {
-        //console.log($scope.imagenid);
     		$scope.categories = data;
-        console.log(data);
     	}).error(function(data) {
     		console.log('Error: ' + data);
     	});
@@ -85,6 +86,15 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     //------FUNCION PARA AGREGAR CATEGORIAS A UNA IMAGEN------------->>>
     $scope.AddCategory = function(){
 
+      $http.post('WebApi.php?val=addCategorybyName',{
+        id: $scope.imagenid,
+        name: $scope.categoryname
+      }).success(function(data) {
+        $scope.categoryname = "";
+        $scope.Actualizar_Categorias();
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
     }
 
     //------------------->>>

@@ -6,7 +6,8 @@ require_once 'Models/Files.php';
 $user = new Users ();
 $file = new Files ();
 
-getCategoriesUser($file,22);
+$data = ["Category_ID"=>19, "Image_ID"=>27];
+getCategoryName($file, "tipografia");
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -86,5 +87,22 @@ function getCategoriesUser($user, $id){
 	}
 }
 //-------------------------->>>
-
+function insertNewCategory($user, $contact){
+	$result = $user->addCategory($contact);
+	return $result;
+}
+//-------------------------->>>
+function getCategoryName($user, $name){
+	$result=$user->getCategorybyName($name);
+	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
+	echo "ID: ", $contactArray[0]['ID'],"<br>";
+  echo "Name Category: ", $contactArray[0]['name'],"<br>";
+  echo "------------------------------------------->>><br>";
+}
+//-------------------------->>>
+function insertNewImageCategoryRelation($user, $category, $temp){
+	$result = $user->addImageCategoryRelation($category, $temp);
+	return $result;
+}
+//-------------------------->>>
 ?>

@@ -87,6 +87,21 @@
   		}
   	}
     //----------------------------->>>
+    private function addCategorybyName() {
+      if ($this->get_request_method () != "POST") {
+  			$this->response ( '', 406 );
+  		}
+  		$usuario = new Files();
+  		$data = json_decode(file_get_contents('php://input'),true);
+      $valor = ["name"=>$data["name"]];
+      $result=$usuario->addCategory($valor);
+      
+      $finales=$usuario->getCategorybyName($data["name"]);
+    	$contactArray=$finales->fetch_all(MYSQLI_ASSOC);
+      $usuario->addImageCategoryRelation($contactArray[0]['ID'], $data["id"]);
+
+  	}
+    //----------------------------->>>
   }
   $api = new WebAPI();
   $api->processApi();

@@ -8,6 +8,9 @@ class Files extends DB {
   const GET_IMAGE = "select * from images where id=?";
   const DELETE_IMAGE_CATEGORIES = "delete from ImagexCategories where Image_ID=?";
   const GET_CATEGORIES_USER = "select Categories.ID AS IDCategoria, Categories.name, ImagexCategories.ID from Categories JOIN ImagexCategories on Categories.ID = ImagexCategories.Category_ID where ImagexCategories.Image_ID = ?";
+  const INSERT_CATEGORY = "insert into Categories(name) values (?)";
+  const GET_CATEGORY_NAME = "select * from Categories where name=?";
+  const INSERT_IMAGECATEGORY = "insert into ImagexCategories(Category_ID,Image_ID) values (?,?)";
 
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
@@ -56,7 +59,7 @@ class Files extends DB {
 		$arguments = ["id"=>$id];
 		$result=$this->query(self::DELETE_IMAGE_CATEGORIES,$arguments);
 	}
-  //---------------------------------->>>
+  //----------COGE INFO IMAGEXCATEGORIES PARA IMPRIMIR CATEGORIAS DE IMAGEN-------------->>>
   public function getCategoriesbyID($id){
     $arguments = ["id"=>$id];
     $result=$this->query(self::GET_CATEGORIES_USER,$arguments);
@@ -65,6 +68,51 @@ class Files extends DB {
     }else{
       die("algo salio mal");
     }
+  }
+  //---------------------------------->>>
+  public function addCategory($contact){
+    $this->open_connection();
+    $statement = $this->conn->prepare(self::INSERT_CATEGORY);
+    if($statement){
+      if (!is_null($contact) && count($contact)>0) {
+        $statement->bind_param ("s", $contact['name']);
+      }
+      $statement->execute();
+      $result=$statement->get_result();
+      $statement->close();
+    }else{
+      $log->error("Error preparing statement of query ".$query );
+    }
+    $this->close_connection();
+    return $result;
+  }
+  //------------IMPRIME INFO DE UNA SOLA CATEGORIA---------------------->>>
+  public function getCategorybyName($name){
+    $arguments = ["name"=>$name];
+    $result=$this->query(self::GET_CATEGORY_NAME,$arguments);
+    if ($result != false) {
+      return $result;
+    }else{
+      die("algo salio mal");
+    }
+  }
+  //---------------------------------->>>
+  public function addImageCategoryRelation($category, $temp){
+    $contact = ["Category_ID"=>$category, "Image_ID"=>$temp];
+    $this->open_connection();
+    $statement = $this->conn->prepare(self::INSERT_IMAGECATEGORY);
+    if($statement){
+      if (!is_null($contact) && count($contact)>0) {
+        $statement->bind_param ("ss", $contact['Category_ID'],$contact['Image_ID']);
+      }
+      $statement->execute();
+      $result=$statement->get_result();
+      $statement->close();
+    }else{
+      $log->error("Error preparing statement of query ".$query );
+    }
+    $this->close_connection();
+    return $result;
   }
   //---------------------------------->>>
 }
