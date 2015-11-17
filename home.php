@@ -31,6 +31,20 @@ if (!isset($_SESSION["username"]) ){
         <button id="image-delete-click" ng-click="CheckDelete()" type="button">Delete</button>
       </div>
 
+      <div id="carpets-box">
+        <p id="carpets-title">Carpets</p>
+
+        <button class="carpet-fill" ng-repeat="info in carpets">
+          <p>{{info.nombre}}</p>
+        </button>
+
+        <form id="carpet-add-box">
+            <img ng-click="AddCarpet()" src="img/Add.svg"/>
+            <input ng-model="carpetname" type="text" placeholder=" Add New Carpet">
+        </form>
+
+      </div>
+
     </nav>
     <!-- ################################### -->
     <main>
@@ -91,7 +105,7 @@ if (!isset($_SESSION["username"]) ){
 
           <button type="button" id="upload-allfiles-button" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">Upload all</button>
 
-          <div id="upload-cancel-button" ng-click="uploader.clearQueue()">Cancel</div>
+          <div id="upload-cancel-button" ng-click="uploader.clearQueue()">Close</div>
         </div>
       </div>
     </div>
@@ -112,7 +126,7 @@ if (!isset($_SESSION["username"]) ){
       <div id="search-box">
         <form id="form-search">
           <img ng-click="AddCategory()" src="img/Add.svg"/>
-          <input ng-model="categoryname" type="text" name="name" ng-model="idimagen" placeholder="Add New Category">
+          <input ng-model="categoryname" type="text" name="name" placeholder="Add New Category">
         </form>
       </div>
 

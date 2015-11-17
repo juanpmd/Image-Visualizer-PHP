@@ -6,9 +6,7 @@ require_once 'Models/Files.php';
 $user = new Users ();
 $file = new Files ();
 
-$contact = ["username"=>"clau1234","name"=>"Clau Enrique","password"=>"1234","email"=>"ClauEnrique@gmail.com"];
-insertNewUser($user, $contact); //category, image
-printAllUsers($user);
+insertNewCarpet($file, "Error");
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -109,6 +107,22 @@ function insertNewImageCategoryRelation($user, $category, $temp){
 function DeleteCategory($user, $id){
 	$result=$user->deleteImageCategoryRelation($id);
 	echo "Funciono eliminar categorias";
+}
+//-------------------------->>>
+function getCarpetsUser($user, $id){
+	$result=$user->getCarpetsbyID($id);
+	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
+	foreach ($contactArray as $contact) {
+		echo "ID_Carpeta: ", $contact['ID'],"<br>";
+    echo "Name Carpeta: ", $contact['nombre'],"<br>";
+		echo "Category_ID: ", $contact['IDRelacion'],"<br>";
+    echo "------------------------------------------->>><br>";
+	}
+}
+//-------------------------->>>
+function insertNewCarpet($user, $contact){
+	$result = $user->addCarpet($contact);
+	return $result;
 }
 //-------------------------->>>
 ?>

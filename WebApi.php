@@ -123,6 +123,39 @@
 
   	}
     //----------------------------->>>
+    private function allCarpets() {
+      session_start();
+      if ($this->get_request_method () != "POST") {
+  			$this->response ( '', 406 );
+  		}
+  		$usuario = new Files();
+  		$data = json_decode(file_get_contents('php://input'),true);
+      $result=$usuario->getCarpetsbyID($_SESSION["username"]);
+      if($result->num_rows > 0){
+  			$array=$result->fetch_all(MYSQLI_ASSOC);
+  			$jsonVar = $this->json($array);
+  			$this->response($jsonVar, 200 );
+  		}else {
+        echo "no llego";
+  			$this->response('', 204 );
+  		}
+  	}
+    //----------------------------->>>
+    private function addCarpetbyName() {
+      if ($this->get_request_method () != "POST") {
+  			$this->response ( '', 406 );
+  		}
+  		$usuario = new Files();
+  		$data = json_decode(file_get_contents('php://input'),true);
+      $result=$usuario->addCarpet($data["name"]);
+
+      /*
+      $finales=$usuario->getCategorybyName($data["name"]);
+    	$contactArray=$finales->fetch_all(MYSQLI_ASSOC);
+      $usuario->addCarpetUserRelation($contactArray[0]['ID'], $data["id"]);
+      */
+  	}
+    //----------------------------->>>
   }
   $api = new WebAPI();
   $api->processApi();

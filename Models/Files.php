@@ -12,6 +12,8 @@ class Files extends DB {
   const GET_CATEGORY_NAME = "select * from Categories where name=?";
   const INSERT_IMAGECATEGORY = "insert into ImagexCategories(Category_ID,Image_ID) values (?,?)";
   const DELETE_IMAGECATEGORY = "delete from ImagexCategories where ID=?";
+  const GET_CARPET = "select Carpetas.ID,Carpetas.nombre,CarpetaxUser.ID AS IDRelacion from Carpetas join CarpetaxUser on Carpetas.ID = CarpetaxUser.Carpeta_ID WHERE User_ID=? ";
+  const INSERT_CARPET = "insert into Carpetas(nombre) values (?)";
 
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
@@ -120,6 +122,55 @@ class Files extends DB {
     $arguments = ["ID"=>$id];
 		$result=$this->query(self::DELETE_IMAGECATEGORY,$arguments);
   }
+  //---------------------------------->>>
+  public function getCarpetsbyID($id){
+    $arguments = ["id"=>$id];
+    $result=$this->query(self::GET_CARPET,$arguments);
+    if ($result != false) {
+      return $result;
+    }else{
+      die("algo salio mal");
+    }
+  }
+  //---------------------------------->>>
+  public function addCarpet($contact){
+    $result = ["nombre"=>$contact];
+    $this->open_connection();
+    $statement = $this->conn->prepare(self::INSERT_CARPET);
+    if($statement){
+      if (!is_null($contact) && count($contact)>0) {
+        $statement->bind_param ("s", $result["nombre"]);
+      }
+      $statement->execute();
+      $result=$statement->get_result();
+      $statement->close();
+    }else{
+      $log->error("Error preparing statement of query ".$query );
+    }
+    $this->close_connection();
+    return $result;
+  }
+  //---------------------------------->>>
+  public function addCarpetUserRelation($category, $temp){
+    $contact = ["Category_ID"=>$category, "Image_ID"=>$temp];
+    $this->open_connection();
+    $statement = $this->conn->prepare(self::INSERT_IMAGECATEGORY);
+    if($statement){
+      if (!is_null($contact) && count($contact)>0) {
+        $statement->bind_param ("ss", $contact['Category_ID'],$contact['Image_ID']);
+      }
+      $statement->execute();
+      $result=$statement->get_result();
+      $statement->close();
+    }else{
+      $log->error("Error preparing statement of query ".$query );
+    }
+    $this->close_connection();
+    return $result;
+  }
+  //---------------------------------->>>
+  //---------------------------------->>>
+  //---------------------------------->>>
   //---------------------------------->>>
 }
 ?>

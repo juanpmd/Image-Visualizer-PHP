@@ -11,6 +11,7 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     $scope.imagendetalle = "";
     $scope.imagenid = 0;
     $scope.categories = [];
+    $scope.carpets = [];
 
 
     //--------FUNCIONES PARA METODO ELIMINAR CON CHECKBOXS----------->>>
@@ -123,7 +124,30 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     	});
     }
     //------------------->>>
+    $scope.Actualizar_Carpetas = function(){
+      $scope.carpets = [];
+      $http.post('WebApi.php?val=allCarpets').success(function(data) {
+    		$scope.carpets = data;
+        //console.log(data);
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
+    }
+    //------------------->>>
+    $scope.AddCarpet = function(){
+
+      $http.post('WebApi.php?val=addCarpetbyName',{
+        name: $scope.carpetname
+      }).success(function(data) {
+        $scope.carpetname = "";
+        $scope.Actualizar_Carpetas();
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
+    }
+    //------------------->>>
     $scope.getImages();
+    $scope.Actualizar_Carpetas();
 
     //#############################----->>>>
     var uploader = $scope.uploader = new FileUploader({
