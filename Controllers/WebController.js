@@ -114,7 +114,7 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     }
     //------------------->>>
     $scope.DeleteCategory = function(data){
-      console.log(data.ID);
+      //console.log(data.ID);
       $http.post('WebApi.php?val=DeleteCategorybyID',{
         id: data.ID
       }).success(function(data) {
@@ -140,6 +140,16 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
         name: $scope.carpetname
       }).success(function(data) {
         $scope.carpetname = "";
+        $scope.Actualizar_Carpetas();
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
+    }
+    //------------------->>>
+    $scope.DeleteCarpet = function(data){
+      $http.post('WebApi.php?val=DeleteCarpetID',{
+        id: data.IDRelacion
+      }).success(function(data) {
         $scope.Actualizar_Carpetas();
     	}).error(function(data) {
     		console.log('Error: ' + data);

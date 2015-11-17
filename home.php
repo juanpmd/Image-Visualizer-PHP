@@ -34,9 +34,10 @@ if (!isset($_SESSION["username"]) ){
       <div id="carpets-box">
         <p id="carpets-title">Carpets</p>
 
-        <button class="carpet-fill" ng-repeat="info in carpets">
+        <div class="carpet-fill" ng-repeat="info in carpets">
           <p>{{info.nombre}}</p>
-        </button>
+          <img ng-click="DeleteCarpet(info)" src="img/Delete2.svg"/>
+        </div>
 
         <form id="carpet-add-box">
             <img ng-click="AddCarpet()" src="img/Add.svg"/>

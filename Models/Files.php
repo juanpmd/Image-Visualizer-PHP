@@ -16,6 +16,7 @@ class Files extends DB {
   const INSERT_CARPET = "insert into Carpetas(nombre) values (?)";
   const GET_CARPET_NAME = "select * from Carpetas where nombre=?";
   const INSERT_CARPETUSER = "insert into CarpetaxUser(Carpeta_ID,User_ID) values (?,?)";
+  const DELETE_CARPETUSER ="delete from CarpetaxUser where ID=?";
 
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
@@ -179,6 +180,11 @@ class Files extends DB {
     }
     $this->close_connection();
     return $result;
+  }
+  //---------------------------------->>>
+  public function deleteCarpetUserRelation($id){
+    $arguments = ["ID"=>$id];
+		$result=$this->query(self::DELETE_CARPETUSER,$arguments);
   }
   //---------------------------------->>>
 

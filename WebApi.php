@@ -156,6 +156,17 @@
 
   	}
     //----------------------------->>>
+    private function DeleteCarpetID() {
+      if ($this->get_request_method () != "POST") {
+  			$this->response ( '', 406 );
+  		}
+  		$usuario = new Files();
+  		$data = json_decode(file_get_contents('php://input'),true);
+      $result=$usuario->deleteCarpetUserRelation($data["id"]);
+      $this->response('', 200 );
+
+  	}
+    //----------------------------->>>
   }
   $api = new WebAPI();
   $api->processApi();
