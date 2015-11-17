@@ -142,6 +142,7 @@
   	}
     //----------------------------->>>
     private function addCarpetbyName() {
+      session_start();
       if ($this->get_request_method () != "POST") {
   			$this->response ( '', 406 );
   		}
@@ -149,11 +150,10 @@
   		$data = json_decode(file_get_contents('php://input'),true);
       $result=$usuario->addCarpet($data["name"]);
 
-      /*
-      $finales=$usuario->getCategorybyName($data["name"]);
+      $finales=$usuario->getCarpetbyName($data["name"]);
     	$contactArray=$finales->fetch_all(MYSQLI_ASSOC);
-      $usuario->addCarpetUserRelation($contactArray[0]['ID'], $data["id"]);
-      */
+      $usuario->addCarpetUserRelation($contactArray[0]['ID'], $_SESSION["username"]);
+
   	}
     //----------------------------->>>
   }

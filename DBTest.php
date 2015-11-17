@@ -6,8 +6,6 @@ require_once 'Models/Files.php';
 $user = new Users ();
 $file = new Files ();
 
-insertNewCarpet($file, "Error");
-
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
 	$result = $user->addNewUser($contact);
@@ -122,6 +120,19 @@ function getCarpetsUser($user, $id){
 //-------------------------->>>
 function insertNewCarpet($user, $contact){
 	$result = $user->addCarpet($contact);
+	return $result;
+}
+//-------------------------->>>
+function getCarpetName($user, $name){
+	$result=$user->getCarpetbyName($name);
+	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
+	echo "ID: ", $contactArray[0]['ID'],"<br>";
+  echo "Name Category: ", $contactArray[0]['nombre'],"<br>";
+  echo "------------------------------------------->>><br>";
+}
+//-------------------------->>>
+function insertNewCarpetUserRelation($user, $category, $temp){
+	$result = $user->addCarpetUserRelation($category, $temp);
 	return $result;
 }
 //-------------------------->>>

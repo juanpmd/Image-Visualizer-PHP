@@ -14,6 +14,8 @@ class Files extends DB {
   const DELETE_IMAGECATEGORY = "delete from ImagexCategories where ID=?";
   const GET_CARPET = "select Carpetas.ID,Carpetas.nombre,CarpetaxUser.ID AS IDRelacion from Carpetas join CarpetaxUser on Carpetas.ID = CarpetaxUser.Carpeta_ID WHERE User_ID=? ";
   const INSERT_CARPET = "insert into Carpetas(nombre) values (?)";
+  const GET_CARPET_NAME = "select * from Carpetas where nombre=?";
+  const INSERT_CARPETUSER = "insert into CarpetaxUser(Carpeta_ID,User_ID) values (?,?)";
 
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
@@ -151,13 +153,23 @@ class Files extends DB {
     return $result;
   }
   //---------------------------------->>>
+  public function getCarpetbyName($name){
+    $arguments = ["nombre"=>$name];
+    $result=$this->query(self::GET_CARPET_NAME,$arguments);
+    if ($result != false) {
+      return $result;
+    }else{
+      die("algo salio mal");
+    }
+  }
+  //---------------------------------->>>
   public function addCarpetUserRelation($category, $temp){
-    $contact = ["Category_ID"=>$category, "Image_ID"=>$temp];
+    $contact = ["Carpeta_ID"=>$category, "User_ID"=>$temp];
     $this->open_connection();
-    $statement = $this->conn->prepare(self::INSERT_IMAGECATEGORY);
+    $statement = $this->conn->prepare(self::INSERT_CARPETUSER);
     if($statement){
       if (!is_null($contact) && count($contact)>0) {
-        $statement->bind_param ("ss", $contact['Category_ID'],$contact['Image_ID']);
+        $statement->bind_param ("ss", $contact['Carpeta_ID'],$contact['User_ID']);
       }
       $statement->execute();
       $result=$statement->get_result();
@@ -169,6 +181,7 @@ class Files extends DB {
     return $result;
   }
   //---------------------------------->>>
+
   //---------------------------------->>>
   //---------------------------------->>>
   //---------------------------------->>>
