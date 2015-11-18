@@ -24,4 +24,10 @@ $(document).ready(function(){
     $("#image-categories").animate({width:'toggle'},100).addClass("hidden");
   });
 
+  $("#carpet-cancel-button").click(function(){
+    $("#carpet_image_page").fadeOut(200).addClass("hidden");
+    $("#carpet-box-page").animate({width:'toggle'},100).addClass("hidden");
+  });
+
+
 });

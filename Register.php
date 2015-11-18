@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION["username"]) ){
+  header( "Location: http://localhost:8888/SeekInspire/home.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html ng-app="WebApp">
   <head>
@@ -21,7 +29,7 @@
           <div class="form-image">
             <img src="img/Username.svg" alt="">
           </div>
-          <input ng-model="nombre2" autofocus="true" class="input-field" type="text" laceholder="Name">
+          <input ng-model="nombre2" autofocus="true" class="input-field" type="text" placeholder="Name">
         </div>
 
         <div class="form-group2">

@@ -163,10 +163,43 @@
   		$usuario = new Files();
   		$data = json_decode(file_get_contents('php://input'),true);
       $result=$usuario->deleteCarpetUserRelation($data["id"]);
+      $result3 = $usuario->deleteCarpetImageRelation($data["idCarpeta"]);
+      $result2 = $usuario->deleteCarpetbyID($data["idCarpeta"]);
       $this->response('', 200 );
 
   	}
     //----------------------------->>>
+    private function getImagesofCarpet() {
+  		if ($this->get_request_method () != "POST") {
+  			$this->response ( '', 406 );
+  		}
+  		$phonebook = new Files();
+      $data = json_decode(file_get_contents('php://input'),true);
+  		$result = $phonebook->getImagesCarpetbyID($data["IDRelacion"]);
+
+  		if($result->num_rows > 0){
+  			$array=$result->fetch_all(MYSQLI_ASSOC);
+  			$jsonVar = $this->json($array);
+  			$this->response($jsonVar, 200 );
+  		}else {
+        echo "no llego";
+  			$this->response('', 204 );
+  		}
+
+  	}
+    //----------------------------->>>
+    private function addImageCarpetRel() {
+      if ($this->get_request_method () != "POST") {
+        $this->response ( '', 406 );
+      }
+      $usuario = new Files();
+      $data = json_decode(file_get_contents('php://input'),true);
+      $result=$usuario->addImageCarpetRelation($data["categoryid"],$data["imageid"]);
+      $this->response('', 200 );
+  	}
+    //----------------------------->>>
+
+
   }
   $api = new WebAPI();
   $api->processApi();

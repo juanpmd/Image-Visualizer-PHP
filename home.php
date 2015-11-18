@@ -29,21 +29,25 @@ if (!isset($_SESSION["username"]) ){
       <div id="delete-box">
         <p>Delete Selected</p>
         <button id="image-delete-click" ng-click="CheckDelete()" type="button">Delete</button>
+        <p>Add to Carpet</p>
+        <div id="addto-carpet-box">
+          <select ng-model="SelCarpet">
+            <option ng-repeat="info in carpets">{{info.nombre}}</option>
+          </select>
+          <button id="image-addcarpet-click" ng-click="AddCheckedtoCarpet()" type="button">Add</button>
+        </div>
       </div>
 
       <div id="carpets-box">
         <p id="carpets-title">Carpets</p>
-
-        <div class="carpet-fill" ng-repeat="info in carpets">
-          <p>{{info.nombre}}</p>
+        <div class="carpet-fill" ng-repeat="info in carpets" >
+          <p ng-click="OpenCarpet(info)">{{info.nombre}}</p>
           <img ng-click="DeleteCarpet(info)" src="img/Delete2.svg"/>
         </div>
-
         <form id="carpet-add-box">
             <img ng-click="AddCarpet()" src="img/Add.svg"/>
             <input ng-model="carpetname" type="text" placeholder=" Add New Carpet">
         </form>
-
       </div>
 
     </nav>
@@ -122,6 +126,28 @@ if (!isset($_SESSION["username"]) ){
         </div>
       </div>
     </div>
+    <!-- ################################### -->
+    <div id="carpet_image_page" class="hidden">
+      <div ng-repeat="data in imagescarpet" class="image-box" id="image-box-size">
+        <button class="image-fill" ng-click="Sacar_Info(data)">
+          <img ng-src="{{ data.name }}"/>
+        </button>
+        <div class="image-info-box">
+        <input ng-model="data.select" type="checkbox" class="checkbox-image">
+        <p class="image-info-datatype">{{ data.datatype | uppercase}}</p></div>
+      </div>
+    </div>
+
+    <div id="carpet-box-page" class="hidden">
+      <div id="search-box">
+        <p id="carpet-info-title">{{carpet_title}}</p>
+      </div>
+
+      <div id="carpet-info-position">
+        <div id="carpet-cancel-button">Close</div>
+      </div>
+    </div>
+
     <!-- ################################### -->
     <div id="image-categories" class="hidden">
       <div id="search-box">

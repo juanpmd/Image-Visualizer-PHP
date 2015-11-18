@@ -17,6 +17,10 @@ class Files extends DB {
   const GET_CARPET_NAME = "select * from Carpetas where nombre=?";
   const INSERT_CARPETUSER = "insert into CarpetaxUser(Carpeta_ID,User_ID) values (?,?)";
   const DELETE_CARPETUSER ="delete from CarpetaxUser where ID=?";
+  const DELETE_CARPETBYID = "delete FROM Carpetas where ID=?";
+  const IMAGES_CARPET = "select CarpetaxImage.ID_Image, images.name, images.datatype, images.username_id, CarpetaxImage.ID_Carpeta, CarpetaxImage.ID AS IDRelacion from images JOIN CarpetaxImage on images.id = CarpetaxImage.ID_Image WHERE CarpetaxImage.ID_Carpeta = ?";
+  const DELETE_CARPETIMAGE = "delete from CarpetaxImage where ID_Carpeta=?";
+  const INSERT_IMAGECARPET = "insert into CarpetaxImage(ID_Carpeta,ID_Image) values (?,?)";
 
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
@@ -187,7 +191,43 @@ class Files extends DB {
 		$result=$this->query(self::DELETE_CARPETUSER,$arguments);
   }
   //---------------------------------->>>
-
+  public function deleteCarpetbyID($id){
+    $arguments = ["ID"=>$id];
+		$result=$this->query(self::DELETE_CARPETBYID,$arguments);
+  }
+  //---------------------------------->>>
+  public function getImagesCarpetbyID($name){
+    $arguments = ["id"=>$name];
+    $result=$this->query(self::IMAGES_CARPET,$arguments);
+    if ($result != false) {
+      return $result;
+    }else{
+      die("algo salio mal");
+    }
+  }
+  public function deleteCarpetImageRelation($id){
+    $arguments = ["ID"=>$id];
+		$result=$this->query(self::DELETE_CARPETIMAGE,$arguments);
+  }
+  //---------------------------------->>>
+  public function addImageCarpetRelation($category, $temp){
+    $contact = ["ID_Carpeta"=>$category, "ID_Image"=>$temp];
+    $this->open_connection();
+    $statement = $this->conn->prepare(self::INSERT_IMAGECARPET);
+    if($statement){
+      if (!is_null($contact) && count($contact)>0) {
+        $statement->bind_param ("ss", $contact['ID_Carpeta'],$contact['ID_Image']);
+      }
+      $statement->execute();
+      $result=$statement->get_result();
+      $statement->close();
+    }else{
+      $log->error("Error preparing statement of query ".$query );
+    }
+    $this->close_connection();
+    return $result;
+  }
+  //---------------------------------->>>
   //---------------------------------->>>
   //---------------------------------->>>
   //---------------------------------->>>
