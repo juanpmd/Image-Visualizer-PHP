@@ -189,9 +189,8 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
       $("#carpet_image_page").fadeIn(200).removeClass("hidden");
       $("#carpet-box-page").animate({width:'toggle'},100).removeClass("hidden");
 
-      //console.log(data.ID);
-      $scope.Actualizar_Usuarios_Carpetas();
       $scope.carpet_id = data.ID;
+      $scope.Actualizar_Usuarios_Carpetas();
       $scope.carpet_title = data.nombre;
       $scope.getImagesCarpet(data);
     }
@@ -239,6 +238,7 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     //------------------------>>>
     $scope.Actualizar_Usuarios_Carpetas = function(){
       $scope.userscarpet = [];
+      //console.log($scope.carpet_id);
       $http.post('WebApi.php?val=allUsersCarpets',{
         id: $scope.carpet_id
       }).success(function(data) {

@@ -236,7 +236,7 @@ class Files extends DB {
   }
   //---------------------------------->>>
   public function getUserCarpetsbyCarpetID($id){
-    $arguments = ["Carpeta_ID"=>49];
+    $arguments = ["Carpeta_ID"=>$id];
     $result=$this->query(self::GET_CARPET_USER,$arguments);
     if ($result != false) {
       return $result;
