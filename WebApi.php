@@ -80,6 +80,16 @@
   		$this->response('', 200 );
   	}
     //----------------------------->>>
+    private function removeImage2() {
+  		if ($this->get_request_method () != "POST") {
+  			$this->response ( '', 406 );
+  		}
+  		$file = new Files();
+  		$data = json_decode(file_get_contents('php://input'),true);
+      $file->deleteImageCarpetById($data["id"]);
+  		$this->response('', 200 );
+  	}
+    //----------------------------->>>
     private function allCategories() {
       if ($this->get_request_method () != "POST") {
   			$this->response ( '', 406 );

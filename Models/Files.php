@@ -21,6 +21,7 @@ class Files extends DB {
   const IMAGES_CARPET = "select CarpetaxImage.ID_Image, images.name, images.datatype, images.username_id, CarpetaxImage.ID_Carpeta, CarpetaxImage.ID AS IDRelacion from images JOIN CarpetaxImage on images.id = CarpetaxImage.ID_Image WHERE CarpetaxImage.ID_Carpeta = ?";
   const DELETE_CARPETIMAGE = "delete from CarpetaxImage where ID_Carpeta=?";
   const INSERT_IMAGECARPET = "insert into CarpetaxImage(ID_Carpeta,ID_Image) values (?,?)";
+  const DELETE_IMAGE_CARPET_RELATION = "delete from CarpetaxImage where ID=?";
 
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
@@ -228,6 +229,10 @@ class Files extends DB {
     return $result;
   }
   //---------------------------------->>>
+  public function deleteImageCarpetById($id){
+    $arguments = ["id"=>$id];
+    $result=$this->query(self::DELETE_IMAGE_CARPET_RELATION,$arguments);
+  }
   //---------------------------------->>>
   //---------------------------------->>>
   //---------------------------------->>>

@@ -146,6 +146,12 @@ if (!isset($_SESSION["username"]) ){
       <div id="carpet-info-position">
         <div id="carpet-cancel-button">Close</div>
       </div>
+
+      <div id="delete-box2">
+        <p>Delete Selected</p>
+        <button id="image-delete-click" ng-click="CheckDeleteInCarpet()" type="button">Delete</button>
+      </div>
+
     </div>
 
     <!-- ################################### -->

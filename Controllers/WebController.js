@@ -32,14 +32,30 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
 			id: id
 			}).success(function(data) {
 				$scope.imagenes = data;
-        $scope.getImages();
 			}).error(function(data) {
 				console.log('Error: ' + data);
 			});
 	  }
-
     //------------------------>>>
-
+    $scope.deleteCheckValue2 = function(data) {
+  		if(data.select){
+        console.log(data.IDRelacion);
+        $scope.deleteImage2(data.IDRelacion);
+      }
+  	}
+    $scope.CheckDeleteInCarpet = function() {
+      angular.forEach($scope.imagescarpet, $scope.deleteCheckValue2);
+  	}
+    $scope.deleteImage2 = function(id) {
+  		$http.post('WebApi.php?val=removeImage2',{
+			id: id
+			}).success(function(data) {
+        window.location.replace("http://localhost:8888/SeekInspire/index.php");
+			}).error(function(data) {
+				console.log('Error: ' + data);
+			});
+	  }
+    //------------------------>>>
 
 
     //--------FUNCION PARA HACER LOGOUT DE USUARIO----------->>>
@@ -180,6 +196,7 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
         IDRelacion: data.ID
       }).success(function(data) {
         $scope.imagescarpet = data;
+        console.log(data);
     	}).error(function(data) {
     		console.log('Error: ' + data);
     	});
@@ -193,13 +210,12 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     $scope.AddCheckedtoCarpet = function() {
       $scope.tempname = $scope.SelCarpet;
       angular.forEach($scope.carpets, $scope.AddtoCarpetCheckValue); //Saca id de la carpeta
-      //console.log($scope.tempid);
       angular.forEach($scope.imagenes, $scope.addImageCarpet); //Mete imagen a id carpeta
     }
 
     $scope.addImageCarpet = function(data) {
       if(data.select){
-        console.log(data.id);
+        //console.log(data.id);
         $scope.deleteImageCarpet(data.id);
       }
     }
