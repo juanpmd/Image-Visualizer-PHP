@@ -261,6 +261,17 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     	});
     }
     //------------------------>>>
+    $scope.DeleteUserCarpet = function(data){
+      console.log(data.User_ID);
+      $http.post('WebApi.php?val=RemoveUserofCarpet',{
+        id: data.ID,
+        nombre: data.User_ID
+      }).success(function(data) {
+        $scope.Actualizar_Usuarios_Carpetas();
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
+    }
     //------------------------>>>
     $scope.getImages();
     $scope.Actualizar_Carpetas();
