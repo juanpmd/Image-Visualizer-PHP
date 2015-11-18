@@ -155,17 +155,14 @@ if (!isset($_SESSION["username"]) ){
       <p id="users-carpet-title">Users in Carpet</p>
       <div id="users-carpet-box">
 
-
-
-
         <div class="carpet-fill" ng-repeat="info in userscarpet" >
           <p>{{info.User_ID}}</p>
           <img ng-click="DeleteCarpet(info)" src="img/Delete2.svg"/>
         </div>
 
         <form id="carpet-add-box">
-            <img ng-click="AddCarpet()" src="img/Add.svg"/>
-            <input ng-model="carpetname" type="text" placeholder=" Add User">
+            <img ng-click="AddUserCarpet()" src="img/Add.svg"/>
+            <input ng-model="usercarpetname" type="text" placeholder=" Add User">
         </form>
 
 

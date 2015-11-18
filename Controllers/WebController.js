@@ -42,7 +42,7 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     //------------------------>>>
     $scope.deleteCheckValue2 = function(data) {
   		if(data.select){
-        console.log(data.IDRelacion);
+        //console.log(data.IDRelacion);
         $scope.deleteImage2(data.IDRelacion);
       }
   	}
@@ -92,7 +92,7 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
         email: $scope.email2
       }).success(function(data) {
         window.location.replace("http://localhost:8888/SeekInspire/index.php");
-				console.log(data);
+				//console.log(data);
 			}).error(function(data) {
 				console.log('Error: ' + data);
 			});
@@ -202,7 +202,7 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
         IDRelacion: data.ID
       }).success(function(data) {
         $scope.imagescarpet = data;
-        console.log(data);
+        //console.log(data);
     	}).error(function(data) {
     		console.log('Error: ' + data);
     	});
@@ -248,6 +248,18 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     	});
     }
     //------------------------>>>
+    $scope.AddUserCarpet = function(){
+      $http.post('WebApi.php?val=addCarpetandUser',{
+        id: $scope.carpet_id,
+        user: $scope.usercarpetname
+
+      }).success(function(data) {
+        $scope.Actualizar_Usuarios_Carpetas();
+    		$scope.usercarpetname = "";
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
+    }
     //------------------------>>>
     //------------------------>>>
     $scope.getImages();

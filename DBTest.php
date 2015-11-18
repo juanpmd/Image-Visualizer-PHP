@@ -7,7 +7,7 @@ $user = new Users ();
 $file = new Files ();
 
 
-getCarpetsUserbyCarpetID($file,46);
+//insertNewCarpetUserRelation($file,49,"test");
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){

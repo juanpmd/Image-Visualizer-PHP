@@ -225,6 +225,16 @@
   		}
   	}
     //----------------------------->>>
+    private function addCarpetandUser() {
+      if ($this->get_request_method () != "POST") {
+        $this->response ( '', 406 );
+      }
+      $usuario = new Files();
+      $data = json_decode(file_get_contents('php://input'),true);
+      $result=$usuario->addCarpetUserRelation($data["id"], $data["user"]);
+      $this->response('', 200 );
+    }
+    //----------------------------->>>
 
 
   }
