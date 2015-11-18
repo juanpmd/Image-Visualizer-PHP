@@ -7,7 +7,7 @@ $user = new Users ();
 $file = new Files ();
 
 
-insertNewCarpetImageRelation($file,37,28);
+getCarpetsUserbyCarpetID($file,46);
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -156,6 +156,17 @@ function getImagesofCarpet($user, $id){
 function insertNewCarpetImageRelation($user, $carpet, $temp){
 	$result = $user->addImageCarpetRelation($carpet, $temp);
 	return $result;
+}
+//-------------------------->>>
+function getCarpetsUserbyCarpetID($user, $id){
+	$result=$user->getUserCarpetsbyCarpetID($id);
+	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
+	foreach ($contactArray as $contact) {
+		echo "ID_Carpeta: ", $contact['ID'],"<br>";
+    echo "Name Carpeta: ", $contact['Carpeta_ID'],"<br>";
+		echo "Category_ID: ", $contact['User_ID'],"<br>";
+    echo "------------------------------------------->>><br>";
+	}
 }
 //-------------------------->>>
 ?>

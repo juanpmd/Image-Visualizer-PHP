@@ -152,6 +152,26 @@ if (!isset($_SESSION["username"]) ){
         <button id="image-delete-click" ng-click="CheckDeleteInCarpet()" type="button">Delete</button>
       </div>
 
+      <p id="users-carpet-title">Users in Carpet</p>
+      <div id="users-carpet-box">
+
+
+
+
+        <div class="carpet-fill" ng-repeat="info in userscarpet" >
+          <p>{{info.User_ID}}</p>
+          <img ng-click="DeleteCarpet(info)" src="img/Delete2.svg"/>
+        </div>
+
+        <form id="carpet-add-box">
+            <img ng-click="AddCarpet()" src="img/Add.svg"/>
+            <input ng-model="carpetname" type="text" placeholder=" Add User">
+        </form>
+
+
+
+      </div>
+
     </div>
 
     <!-- ################################### -->
