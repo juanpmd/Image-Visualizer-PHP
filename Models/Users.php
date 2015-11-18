@@ -13,7 +13,7 @@ class Users extends DB {
 		$statement = $this->conn->prepare(self::INSERT_USER);
 		if($statement){
 			if (!is_null($contact) && count($contact)>0) {
-				$statement->bind_param ("ssss", $contact['username'], $contact['name'], $contact['password'], $contact['email']);
+				$statement->bind_param ("ssss", $contact['username'], $contact['name'], md5($contact['password']), $contact['email']);
 			}
 			$statement->execute();
 			$result=$statement->get_result();

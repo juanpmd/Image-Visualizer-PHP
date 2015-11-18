@@ -5,7 +5,6 @@ if (isset($_SESSION["username"]) ){
 }
 ?>
 
-
 <!DOCTYPE html>
 <html ng-app="WebApp">
   <head>
