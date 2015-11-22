@@ -28,6 +28,11 @@ $(document).ready(function(){
     $("#carpet_image_page").fadeOut(200).addClass("hidden");
     $("#carpet-box-page").animate({width:'toggle'},100).addClass("hidden");
   });
+  //-------------Salir de Vista Search----------->>>
+  $("#search-cancel-button").click(function(){
+    $("#images-search-section").fadeOut(200).addClass("hidden");
+    $("#search-box-page").animate({width:'toggle'},100).addClass("hidden");
+  });
 
 
 });

@@ -245,6 +245,24 @@
       $this->response('', 200 );
   	}
     //----------------------------->>>
+    private function allImagesSearch() {
+  		if ($this->get_request_method () != "POST") {
+  			$this->response ( '', 406 );
+  		}
+  		$phonebook = new Files();
+      $data = json_decode(file_get_contents('php://input'),true);
+  		$result = $phonebook->getImagesCategory($data["name"]);
+
+  		if($result->num_rows > 0){
+  			$array=$result->fetch_all(MYSQLI_ASSOC);
+  			$jsonVar = $this->json($array);
+  			$this->response($jsonVar, 200 );
+  		}else {
+        echo "no llego";
+  			$this->response('', 204 );
+  		}
+  	}
+    //----------------------------->>>
 
   }
   $api = new WebAPI();

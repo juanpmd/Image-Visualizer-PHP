@@ -23,6 +23,7 @@ class Files extends DB {
   const INSERT_IMAGECARPET = "insert into CarpetaxImage(ID_Carpeta,ID_Image) values (?,?)";
   const DELETE_IMAGE_CARPET_RELATION = "delete from CarpetaxImage where ID=?";
   const GET_CARPET_USER = "select * from CarpetaxUser WHERE Carpeta_ID=?";
+  const SEARCH = "select images.id, images.username_id, images.name, images.datatype From Categories join ImagexCategories on Categories.ID = ImagexCategories.Category_ID join images on ImagexCategories.Image_ID = images.id where Categories.name=?";
 
   //----------FUNCION PARA AGREGAR UNA IMAGEN NUEVA------------------------>>>
   public function addNewImages($contact) {
@@ -238,6 +239,16 @@ class Files extends DB {
   public function getUserCarpetsbyCarpetID($id){
     $arguments = ["Carpeta_ID"=>$id];
     $result=$this->query(self::GET_CARPET_USER,$arguments);
+    if ($result != false) {
+      return $result;
+    }else{
+      die("algo salio mal");
+    }
+  }
+  //---------------------------------->>>
+  public function getImagesCategory($id){
+    $arguments = ["name"=>$id];
+    $result=$this->query(self::SEARCH,$arguments);
     if ($result != false) {
       return $result;
     }else{

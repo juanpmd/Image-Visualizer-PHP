@@ -7,7 +7,7 @@ $user = new Users ();
 $file = new Files ();
 
 
-getCarpetsUserbyCarpetID($file,52);
+getImagesofCategory($file,"flat design");
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -165,6 +165,18 @@ function getCarpetsUserbyCarpetID($user, $id){
 		echo "ID_Carpeta: ", $contact['ID'],"<br>";
     echo "Name Carpeta: ", $contact['Carpeta_ID'],"<br>";
 		echo "Category_ID: ", $contact['User_ID'],"<br>";
+    echo "------------------------------------------->>><br>";
+	}
+}
+//-------------------------->>>
+function getImagesofCategory($user, $id){
+	$result=$user->getImagesCategory($id);
+	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
+	foreach ($contactArray as $contact) {
+		echo "ID: ", $contact['id'],"<br>";
+    echo "Username: ", $contact['username_id'],"<br>";
+		echo "Image: ", $contact['name'],"<br>";
+		echo "Datatype: ", $contact['datatype'],"<br>";
     echo "------------------------------------------->>><br>";
 	}
 }

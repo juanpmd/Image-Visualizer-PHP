@@ -19,6 +19,7 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
 
     $scope.userscarpet = [];
     $scope.carpet_id = 0;
+    $scope.imagessearch = [];
 
 
     //--------FUNCIONES PARA METODO ELIMINAR CON CHECKBOXS----------->>>
@@ -273,6 +274,26 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     	});
     }
     //------------------------>>>
+    $scope.SearchButton = function(){
+
+      $scope.imagessearch = [];
+
+      $http.post('WebApi.php?val=allImagesSearch',{
+        name: $scope.searchvariable
+      }).success(function(data) {
+        $scope.searchvariable = "";
+        $scope.imagessearch = data;
+        $("#images-search-section").fadeIn(200).removeClass("hidden");
+        $("#search-box-page").animate({width:'toggle'},100).removeClass("hidden");
+        console.log($scope.imagessearch);
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
+    }
+    //------------------------>>>
+
+
+
     $scope.getImages();
     $scope.Actualizar_Carpetas();
 

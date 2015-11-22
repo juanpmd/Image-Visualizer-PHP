@@ -21,8 +21,8 @@ if (!isset($_SESSION["username"]) ){
     <nav>
       <div id="search-box">
         <form id="form-search">
-          <img src="img/Search.svg"/>
-          <input type="text" name="name" placeholder="Search for tags">
+          <img src="img/Search.svg" ng-click="SearchButton()"/>
+          <input ng-model="searchvariable" type="text" name="name" placeholder="Search for tags">
         </form>
       </div>
 
@@ -189,6 +189,29 @@ if (!isset($_SESSION["username"]) ){
       </div>
 
     </div>
+    <!-- ################################### -->
+    <div id="images-search-section" class="hidden">
+      <div ng-repeat="data in imagessearch" class="image-box" id="image-box-size">
+
+        <button class="image-fill" ng-click="Sacar_Info(data)">
+          <img ng-src="{{ data.name }}"/>
+        </button>
+        <div class="image-info-box">
+        <input ng-model="data.select" type="checkbox" class="checkbox-image">
+        <p class="image-info-datatype">{{ data.datatype | uppercase}}</p></div>
+      </div>
+    </div>
+
+
+
+    <div id="search-box-page" class="hidden">
+      <div id="search-box">
+        <div id="search-cancel-button">Cancel Search</div>
+      </div>
+
+
+    </div>
+
     <!-- ################################### -->
     <script src="js/jQuery.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
