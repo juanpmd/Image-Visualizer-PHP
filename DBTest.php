@@ -7,7 +7,7 @@ $user = new Users ();
 $file = new Files ();
 
 
-getImagesofCategory($file,"flat design");
+getUserallInfo($user,"juanpmd");
 
 //-------FUNCION PARA INGRESAR USUARIO NUEVO------------------->>>
 function insertNewUser($user, $contact){
@@ -181,4 +181,16 @@ function getImagesofCategory($user, $id){
 	}
 }
 //-------------------------->>>
+function getUserallInfo($user, $username){
+	$result=$user->infoUserbyUserName($username);
+	$contactArray=$result->fetch_all(MYSQLI_ASSOC);
+	foreach ($contactArray as $contact) {
+    echo "Username: ", $contact['username'],"<br>";
+		echo "email: ", $contact['email'],"<br>";
+		echo "Name: ", $contact['name'],"<br>";
+    echo "------------------------------------------->>><br>";
+	}
+}
+//-------------------------->>>
+
 ?>

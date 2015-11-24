@@ -64,7 +64,7 @@ if (!isset($_SESSION["username"]) ){
     </main>
     <!-- ################################### -->
     <div id="settings-box" class="hidden">
-      <button ng-click="" class="settings-item">
+      <button ng-click="openUserData()" class="settings-item">
         <img src="img/Settings.svg">
         <p>Settings</p>
       </button>
@@ -201,17 +201,29 @@ if (!isset($_SESSION["username"]) ){
         <p class="image-info-datatype">{{ data.datatype | uppercase}}</p></div>
       </div>
     </div>
-
-
-
     <div id="search-box-page" class="hidden">
       <div id="search-box">
         <div id="search-cancel-button">Cancel Search</div>
       </div>
-
-
     </div>
+    <!-- ################################### -->
+    <div id="editar-info" class="hidden">
+      <div id="editar-block">
+        <form><br><br><br>
+          <p>Username</p>
+          <input type="text" ng-model="user_username" placeholder="">
+          <p>Name</p>
+          <input type="text" ng-model="user_name" placeholder="">
+          <p>Email</p>
+          <input type="text" ng-model="user_email" placeholder="">
+        </form>
 
+        <div id="editar-cancel">
+          <div id="editar-update-button" ng-click="user_info_update()">Update</div>
+          <div id="editar-cancel-button">Close</div>
+        </div>
+      </div>
+    </div>
     <!-- ################################### -->
     <script src="js/jQuery.js"></script>
     <script type="text/javascript" src="js/home.js"></script>

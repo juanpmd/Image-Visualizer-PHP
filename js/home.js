@@ -34,5 +34,9 @@ $(document).ready(function(){
     $("#search-box-page").animate({width:'toggle'},100).addClass("hidden");
   });
 
+  $("#editar-cancel-button").click(function(){
+    $("#editar-info").fadeOut(200).addClass("hidden");
+  });
+
 
 });

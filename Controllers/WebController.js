@@ -291,8 +291,33 @@ app.controller("WebAppController", ['$scope', '$http', 'FileUploader',
     	});
     }
     //------------------------>>>
+    $scope.openUserData = function(){
+      $("#editar-info").fadeIn(200).removeClass("hidden");
 
+      $http.post('WebApi.php?val=getUserallInfo').success(function(data) {
+        console.log(data);
+        $scope.user_username = data[0].username;
+        $scope.user_name = data[0].name;
+        $scope.user_email = data[0].email;
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
 
+    }
+    //------------------------>>>
+    $scope.user_info_update = function(){
+      $http.post('WebApi.php?val=UpdateUserallInfo',{
+        name: $scope.user_name,
+        username: $scope.user_username,
+        email: $scope.user_email
+      }).success(function(data) {
+
+    	}).error(function(data) {
+    		console.log('Error: ' + data);
+    	});
+
+    }
+    //------------------------>>>
 
     $scope.getImages();
     $scope.Actualizar_Carpetas();

@@ -263,6 +263,34 @@
   		}
   	}
     //----------------------------->>>
+    private function getUserallInfo() {
+      session_start();
+      if ($this->get_request_method () != "POST") {
+        $this->response ( '', 406 );
+      }
+      $usuario = new Users();
+      $data = json_decode(file_get_contents('php://input'),true);
+      $result=$usuario->infoUserbyUserName($_SESSION["username"]);
+      if($result->num_rows > 0){
+  			$array=$result->fetch_all(MYSQLI_ASSOC);
+  			$jsonVar = $this->json($array);
+  			$this->response($jsonVar, 200 );
+  		}else {
+        echo "no llego";
+  			$this->response('', 204 );
+  		}
+  	}
+    //----------------------------->>>
+    private function UpdateUserallInfo() {
+      if ($this->get_request_method () != "POST") {
+        $this->response ( '', 406 );
+      }
+      $usuario = new Users();
+      $data = json_decode(file_get_contents('php://input'),true);
+      $result=$usuario->infoUserbyUserName($_SESSION["username"]);
+      $this->response('', 200 );
+  	}
+    //----------------------------->>>
 
   }
   $api = new WebAPI();
